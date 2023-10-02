@@ -2388,6 +2388,7 @@ GameObject:
   - component: {fileID: 8811223557512841535}
   - component: {fileID: 8804067532030890555}
   - component: {fileID: 8792703578025216249}
+  - component: {fileID: 7451200060851565599}
   m_Layer: 0
   m_Name: Casle
   m_TagString: Casle
@@ -2472,6 +2473,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7451200060851565599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814596721328325003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9281483, y: 6.975555, z: 5.5999994}
+  m_Center: {x: -0.000010371208, y: 3.4780529, z: 0.016314387}
 --- !u!1 &8814644836663276031
 GameObject:
   m_ObjectHideFlags: 0
