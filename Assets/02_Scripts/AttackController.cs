@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public enum ATTACKTYPE
+    {
+        SINGLE,
+        RANGE
+    }
+    public ATTACKTYPE attackType;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SingleAttack()
+    {
+
+    }
+
+    public void RangeAttack()
+    {
+
     }
 }
