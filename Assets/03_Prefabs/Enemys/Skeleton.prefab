@@ -83,8 +83,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71945912d09ebe41b905f741ba52edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterState: 0
+  livingEntityState: 0
+  target: {fileID: 0}
+  maxHealth: 50
   health: 0
+  moveSpeed: 3
+  rotateSpeed: 0
+  power: 5
+  attackDistance: 1
+  attackCoolTime: 3
+  currentTime: 0
+  isDead: 0
+  isDamage: 0
 --- !u!114 &7464504695025175979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3cb196f91979646b834e614058b48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackType: 0
 --- !u!1001 &5854901647100891053
 PrefabInstance:
   m_ObjectHideFlags: 0
