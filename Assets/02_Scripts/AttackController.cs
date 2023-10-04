@@ -11,11 +11,13 @@ public class AttackController : MonoBehaviour
     }
     public ATTACKTYPE attackType;
 
-    private EnemyController livingEntityController;
+    public EnemyController enemyController;
+    public PawnController pawnController;
 
     void Start()
     {
-        livingEntityController = GetComponent<EnemyController>();
+        enemyController = GetComponent<EnemyController>();
+        pawnController = GetComponent<PawnController>();
     }
 
     void Update()
@@ -25,22 +27,27 @@ public class AttackController : MonoBehaviour
 
     public void SingleAttack()
     {
-        switch (livingEntityController.target.tag)
+        if (gameObject.CompareTag("Enemy"))
         {
-            case "King":
-                livingEntityController.target.GetComponent<PlayerController>().OnDamage(livingEntityController.power);
+            switch (enemyController.target.tag)
+            {
+                case "King":
+                    enemyController.target.GetComponent<PlayerController>().OnDamage(enemyController.power);
 
-                break;
-            case "Pawn":
-                livingEntityController.target.GetComponent<PawnController>().OnDamage(livingEntityController.power);
+                    break;
+                case "Pawn":
+                    enemyController.target.GetComponent<PawnController>().OnDamage(enemyController.power);
 
-                break;
-            case "Building":
-                break;
-            case "Enemy":
-                break;
-            default: 
-                break;
+                    break;
+                case "Building":
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (gameObject.CompareTag("Pawn"))
+        {
+            pawnController.attackTarget.GetComponent<EnemyController>().OnDamage(pawnController.power);
         }
     }
 

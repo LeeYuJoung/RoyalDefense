@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
+  enemyController: {fileID: 0}
+  pawnController: {fileID: 0}
 --- !u!114 &8618726831371720883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,17 +98,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb97ab4dbc6c0994ba99b63f3e24fb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livingEntityState: 0
+  pawnState: 0
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}
-  maxHealth: 0
+  maxHealth: 100
   health: 0
-  moveSpeed: 0
+  moveSpeed: 2
   rotateSpeed: 0
-  power: 0
-  attackDistance: 0
-  attackCoolTime: 0
+  power: 5
+  attackDistance: 2.5
+  attackCoolTime: 2
   currentTime: 0
+  hitTime: 0
   isDead: 0
   isDamage: 0
 --- !u!1001 &4381862754477340755

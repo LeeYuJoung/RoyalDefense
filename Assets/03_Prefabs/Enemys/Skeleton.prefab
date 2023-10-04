@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 637525793268781632}
   - component: {fileID: 5567928042806262465}
   - component: {fileID: 6930756606409362030}
-  - component: {fileID: 6299204802404760470}
   - component: {fileID: 7464504695025175979}
+  - component: {fileID: 1014865338}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Enemy
@@ -71,30 +71,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6299204802404760470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8711238464763020857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71945912d09ebe41b905f741ba52edd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  livingEntityState: 1
-  target: {fileID: 0}
-  maxHealth: 50
-  health: 50
-  moveSpeed: 1.5
-  rotateSpeed: 0
-  power: 5
-  attackDistance: 2
-  attackCoolTime: 3
-  currentTime: 0
-  isDead: 0
-  isDamage: 0
 --- !u!114 &7464504695025175979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +84,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
+  enemyController: {fileID: 0}
+  pawnController: {fileID: 0}
+--- !u!114 &1014865338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711238464763020857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6822debb40a52ef43aa6d1606daf4682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: 1
+  target: {fileID: 0}
+  maxHealth: 50
+  health: 50
+  moveSpeed: 2
+  rotateSpeed: 0
+  power: 5
+  attackDistance: 2.5
+  attackCoolTime: 2
+  currentTime: 0
+  hitTime: 0
+  isDead: 0
+  isDamage: 0
 --- !u!1001 &5854901647100891053
 PrefabInstance:
   m_ObjectHideFlags: 0

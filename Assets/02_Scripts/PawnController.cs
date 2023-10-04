@@ -34,6 +34,7 @@ public class PawnController : MonoBehaviour
     public float attackDistance;
     public float attackCoolTime;
     public float currentTime;
+    public float hitTime;
 
     public bool isDead = false;
     public bool isDamage = false;
@@ -50,6 +51,7 @@ public class PawnController : MonoBehaviour
 
     void Update()
     {
+        AttackTargetCheck();
         StateCheck();
     }
 
@@ -58,23 +60,28 @@ public class PawnController : MonoBehaviour
         if (isDead)
             return;
 
+        currentTime += Time.deltaTime;
+
         switch (pawnState)
         {
             case LIVINGENTITYSTATE.None:
                 break;
             case LIVINGENTITYSTATE.IDLE:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
+                navAgent.isStopped = true;
+                navAgent.velocity = Vector3.zero;
 
                 break;
             case LIVINGENTITYSTATE.WALK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
+                navAgent.isStopped = false;
                 navAgent.speed = moveSpeed;
 
                 float distance = Vector3.Distance(transform.position, moveTarget.position);
 
-                if (distance < attackDistance)
+                if (distance <= 1.0f)
                 {
-                    pawnState = LIVINGENTITYSTATE.ATTACK;
+                    pawnState = LIVINGENTITYSTATE.IDLE;
                 }
                 else
                 {
@@ -85,37 +92,38 @@ public class PawnController : MonoBehaviour
             case LIVINGENTITYSTATE.ATTACK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
 
-                currentTime += Time.deltaTime;
-                if (currentTime > attackCoolTime)
+                if(currentTime > attackCoolTime)
                 {
                     currentTime = 0;
 
                     if (attackController.attackType == AttackController.ATTACKTYPE.SINGLE)
                     {
                         attackController.SingleAttack();
+                        pawnState = LIVINGENTITYSTATE.IDLE;
                     }
                     else
                     {
                         attackController.RangeAttack();
+                        pawnState = LIVINGENTITYSTATE.IDLE;
                     }
                 }
 
-                distance = Vector3.Distance(transform.position, moveTarget.position);
+                distance = Vector3.Distance(transform.position, attackTarget.position);
 
                 if (distance > attackDistance)
                 {
-                    pawnState = LIVINGENTITYSTATE.WALK;
+                    pawnState = LIVINGENTITYSTATE.IDLE;
                 }
 
                 break;
             case LIVINGENTITYSTATE.HIT:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
 
-                currentTime += Time.deltaTime;
-                if (currentTime > 0.667f)
+                hitTime += Time.deltaTime;
+                if (hitTime > 0.667f)
                 {
-                    currentTime = 0;
-                    pawnState = LIVINGENTITYSTATE.WALK;
+                    hitTime = 0;
+                    pawnState = LIVINGENTITYSTATE.ATTACK;
                 }
 
                 break;
@@ -144,8 +152,33 @@ public class PawnController : MonoBehaviour
         }
     }
 
-    public void TargetCheck()
+    public void AttackTargetCheck()
     {
+        if(pawnState == LIVINGENTITYSTATE.WALK)
+        {
+            return;
+        }
 
+        currentTime += Time.deltaTime;
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 2.0f, 1 << 6);
+
+        if (_coll.Length > 0)
+        {
+            float minDis = Vector3.Distance(transform.position, _coll[0].transform.position);
+            int minIdx = 0;
+
+            for (int i = 0; i < _coll.Length; i++)
+            {
+                if (minDis >= Vector3.Distance(transform.position, _coll[i].transform.position))
+                {
+                    minDis = Vector3.Distance(transform.position, _coll[i].transform.position);
+                    minIdx = i;
+                }
+            }
+
+            attackTarget = _coll[minIdx].transform;
+            transform.LookAt(attackTarget);
+            pawnState = LIVINGENTITYSTATE.ATTACK;
+        }
     }
 }

@@ -25,14 +25,18 @@ public class MouseClickController : MonoBehaviour
                     switch(hit.collider.gameObject.tag)
                     {
                         case "Tile":
-                            if (GameManager.Instance().isNight)
+                            if (GameManager.Instance().isNight && _object != null)
                             {
-                                _object.GetComponent<EnemyController>().target = hit.transform;
+                                _object.GetComponent<PawnController>().moveTarget = hit.transform;
+                                _object.GetComponent<PawnController>().pawnState = PawnController.LIVINGENTITYSTATE.WALK;
+                                _object = null;
+                                Time.timeScale = 1.0f;
                             }
 
                             break;
                         case "Pawn":
                             _object = hit.collider.gameObject;
+                            Time.timeScale = 0.25f;
 
                             break;
                         case "Building":

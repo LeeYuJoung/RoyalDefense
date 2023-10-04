@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     public float attackDistance;
     public float attackCoolTime;
     public float currentTime;
+    public float hitTime;
 
     public bool isDead = false;
     public bool isDamage = false;
@@ -57,6 +58,8 @@ public class EnemyController : MonoBehaviour
     {
         if (isDead)
             return;
+
+        currentTime += Time.deltaTime;
 
         switch (enemyState)
         {
@@ -85,7 +88,6 @@ public class EnemyController : MonoBehaviour
             case LIVINGENTITYSTATE.ATTACK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
 
-                currentTime += Time.deltaTime;
                 if(currentTime > attackCoolTime)
                 {
                     currentTime = 0;
@@ -111,10 +113,10 @@ public class EnemyController : MonoBehaviour
             case LIVINGENTITYSTATE.HIT:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
 
-                currentTime += Time.deltaTime;
-                if (currentTime > 0.667f)
+                hitTime += Time.deltaTime;
+                if (hitTime > 0.667f)
                 {
-                    currentTime = 0;
+                    hitTime = 0;
                     enemyState = LIVINGENTITYSTATE.WALK;
                 }
 
@@ -126,6 +128,8 @@ public class EnemyController : MonoBehaviour
                 navAgent.enabled = false;
                 _collider.enabled = false;
                 isDead = true;
+
+                Destroy(gameObject, 0.5f);
 
                 break;
             default:
@@ -163,6 +167,7 @@ public class EnemyController : MonoBehaviour
             }
 
             target = _coll[minIdx].transform;
+            transform.LookAt(target.position);
         }
     }
 }
