@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6930756606409362030}
   - component: {fileID: 6299204802404760470}
   - component: {fileID: 7464504695025175979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,14 +83,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71945912d09ebe41b905f741ba52edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livingEntityState: 0
+  livingEntityState: 1
   target: {fileID: 0}
   maxHealth: 50
-  health: 0
-  moveSpeed: 3
+  health: 50
+  moveSpeed: 1.5
   rotateSpeed: 0
   power: 5
-  attackDistance: 1
+  attackDistance: 2
   attackCoolTime: 3
   currentTime: 0
   isDead: 0
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2468889828458600031, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: -0.0819
       objectReference: {fileID: 0}
     - target: {fileID: 2468889828458600031, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
       propertyPath: m_LocalPosition.z

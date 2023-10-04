@@ -2389,9 +2389,9 @@ GameObject:
   - component: {fileID: 8804067532030890555}
   - component: {fileID: 8792703578025216249}
   - component: {fileID: 7451200060851565599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Casle
-  m_TagString: Casle
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

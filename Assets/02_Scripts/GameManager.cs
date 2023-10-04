@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+    public bool isNight = false;
+
     void Start()
     {
         if(_instance == null)

@@ -24,25 +24,28 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 3.0f;
     public float rotateSpeed = 2.0f;
 
-    public int currentHealth;
+    public int health;
     public int maxHealth;
 
     public float currentTime;
     public float attackCoolTime = 2.0f;
     public float attackTime = 0.667f;
+    public int power;
 
     public bool isAttack = false;
+    public bool isDamage = false;
+    public bool isDead = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+
+        health = maxHealth;
     }
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-
         if(Input.GetMouseButtonDown(1) && currentTime > attackCoolTime)
         {
             currentTime = 0;
@@ -56,21 +59,32 @@ public class PlayerController : MonoBehaviour
 
     public void StateCheck()
     {
+        if(isDead)
+        {
+            // 게임 오버 UI 활성화
+
+            return;
+        }
+
         switch (playerState)
         {
             case PLAYERSTATE.IDLE:
                 animator.SetInteger("PLAYERSTATE", (int)playerState);
+                currentTime += Time.deltaTime;
 
                 break; 
             case PLAYERSTATE.WALK:
                 animator.SetInteger("PLAYERSTATE", (int)playerState);
+                currentTime += Time.deltaTime;
 
                 break; 
             case PLAYERSTATE.ATTACK:
                 animator.SetInteger("PLAYERSTATE", (int)playerState);
 
-                if(currentTime > attackTime)
+                currentTime += Time.deltaTime;
+                if (currentTime > attackTime)
                 {
+                    Attack();
                     currentTime = 0;
                     isAttack = false;
                 }
@@ -78,6 +92,14 @@ public class PlayerController : MonoBehaviour
                 break;
             case PLAYERSTATE.DAMAGE:
                 animator.SetInteger("PLAYERSTATE", (int)playerState);
+
+                currentTime += Time.deltaTime;
+                if (currentTime > 0.667f)
+                {
+                    isDamage = false;
+                    currentTime = 0;
+                    playerState = PLAYERSTATE.IDLE;
+                }
 
                 break;
             case PLAYERSTATE.DIE:
@@ -91,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        if (isAttack)
+        if (isAttack || isDamage)
             return;
 
         h = Input.GetAxis("Horizontal");
@@ -111,6 +133,42 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerState = PLAYERSTATE.IDLE;
+        }
+    }
+
+    public void Attack()
+    {
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 2.0f, 1 << 6);
+
+        if(_coll.Length > 0)
+        {
+            float minDis = Vector3.Distance(transform.position, _coll[0].transform.position);
+            int minIdx = 0;
+
+            for (int i = 0; i < _coll.Length; i++)
+            {
+                if (minDis >= Vector3.Distance(transform.position, _coll[i].transform.position))
+                {
+                    minDis = Vector3.Distance(transform.position, _coll[i].transform.position);
+                    minIdx = i;
+                }
+            }
+
+            _coll[minIdx].GetComponent<EnemyController>().OnDamage(power);
+        }
+    }
+
+    public void OnDamage(int _power)
+    {
+        isDamage = true;
+        currentTime = 0;
+        health -= _power;
+        playerState = PLAYERSTATE.DAMAGE;
+
+        if (health <= 0)
+        {
+            isDead = true;
+            playerState = PLAYERSTATE.DIE;
         }
     }
 }

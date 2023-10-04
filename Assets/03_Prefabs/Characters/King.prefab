@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1213937642398197494}
   - component: {fileID: 1213937642398197495}
   - component: {fileID: 1213937642398195977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: King
   m_TagString: King
   m_Icon: {fileID: 0}
@@ -81,12 +81,15 @@ MonoBehaviour:
   v: 0
   moveSpeed: 3
   rotateSpeed: 2
-  currentHealth: 0
-  maxHealth: 0
+  health: 0
+  maxHealth: 100
   currentTime: 0
-  attackCoolTime: 1.5
+  attackCoolTime: 1.2
   attackTime: 0.667
+  power: 10
   isAttack: 0
+  isDamage: 0
+  isDead: 0
 --- !u!1001 &1213937643051273740
 PrefabInstance:
   m_ObjectHideFlags: 0

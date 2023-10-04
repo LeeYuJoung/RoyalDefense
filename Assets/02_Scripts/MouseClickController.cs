@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseClickController : MonoBehaviour
 {
     public RaycastHit hit;
+    public GameObject _object;
 
     void Start()
     {
@@ -24,10 +25,21 @@ public class MouseClickController : MonoBehaviour
                     switch(hit.collider.gameObject.tag)
                     {
                         case "Tile":
+                            if (GameManager.Instance().isNight)
+                            {
+                                _object.GetComponent<EnemyController>().target = hit.transform;
+                            }
+
                             break;
                         case "Pawn":
+                            _object = hit.collider.gameObject;
+
                             break;
                         case "Building":
+                            break;
+                        case "King":
+                            break;
+                        default:
                             break;
                     }
                 }
