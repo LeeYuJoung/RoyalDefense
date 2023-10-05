@@ -10,6 +10,7 @@ TagManager:
   - Pawn
   - Building
   - Enemy
+  - Pawns
   layers:
   - Default
   - TransparentFX

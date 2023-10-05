@@ -102,7 +102,7 @@ MonoBehaviour:
   target: {fileID: 0}
   maxHealth: 50
   health: 50
-  moveSpeed: 2
+  moveSpeed: 1.5
   rotateSpeed: 0
   power: 5
   attackDistance: 2.5

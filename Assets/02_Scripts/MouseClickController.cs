@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseClickController : MonoBehaviour
 {
+    public GameObject[] buildingPrefabs;
+
     public RaycastHit hit;
     public GameObject _object;
 
@@ -29,8 +31,14 @@ public class MouseClickController : MonoBehaviour
                             {
                                 _object.GetComponent<PawnController>().moveTarget = hit.transform;
                                 _object.GetComponent<PawnController>().pawnState = PawnController.LIVINGENTITYSTATE.WALK;
+
                                 _object = null;
                                 Time.timeScale = 1.0f;
+                            }
+                            else
+                            {
+                                GameObject _building = Instantiate(buildingPrefabs[0]);
+                                _building.transform.position = hit.transform.position;
                             }
 
                             break;

@@ -87,8 +87,9 @@ public class EnemyController : MonoBehaviour
                 break;
             case LIVINGENTITYSTATE.ATTACK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
+                transform.LookAt(target.position);
 
-                if(currentTime > attackCoolTime)
+                if (currentTime > attackCoolTime)
                 {
                     currentTime = 0;
 
@@ -167,7 +168,6 @@ public class EnemyController : MonoBehaviour
             }
 
             target = _coll[minIdx].transform;
-            transform.LookAt(target.position);
         }
     }
 }

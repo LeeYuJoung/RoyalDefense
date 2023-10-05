@@ -37,7 +37,8 @@ public class PawnController : MonoBehaviour
     public float hitTime;
 
     public bool isDead = false;
-    public bool isDamage = false;
+    public bool isAttack = false;
+    public bool isHit = false;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class PawnController : MonoBehaviour
 
     void Update()
     {
-        AttackTargetCheck();
+        TargetCheck();
         StateCheck();
     }
 
@@ -116,22 +117,10 @@ public class PawnController : MonoBehaviour
                 }
 
                 break;
-            case LIVINGENTITYSTATE.HIT:
-                animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
-
-                hitTime += Time.deltaTime;
-                if (hitTime > 0.667f)
-                {
-                    hitTime = 0;
-                    pawnState = LIVINGENTITYSTATE.ATTACK;
-                }
-
-                break;
             case LIVINGENTITYSTATE.DIE:
                 animator.SetTrigger("DIE");
                 pawnState = LIVINGENTITYSTATE.None;
 
-                navAgent.enabled = false;
                 _collider.enabled = false;
                 isDead = true;
 
@@ -143,16 +132,15 @@ public class PawnController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
-        health -= _power;
-        pawnState = LIVINGENTITYSTATE.HIT;
-
         if (health <= 0)
         {
             pawnState = LIVINGENTITYSTATE.DIE;
         }
+
+        health -= _power;
     }
 
-    public void AttackTargetCheck()
+    public void TargetCheck()
     {
         if(pawnState == LIVINGENTITYSTATE.WALK)
         {
