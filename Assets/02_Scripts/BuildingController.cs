@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class BuildingController : MonoBehaviour
@@ -7,7 +9,8 @@ public class BuildingController : MonoBehaviour
     public enum BUILDINGTYPE
     {
         DEFENCETYPE,
-        ATTACKTYPE
+        BALISTA,
+        TOWER
     }
     public BUILDINGTYPE buildingType;
 
@@ -20,6 +23,8 @@ public class BuildingController : MonoBehaviour
     }
     public BUILDINGSTATE buildingState;
 
+    public AttackController attackController;
+    public GameObject towerHead;
     public GameObject _bulletPrefabs;
     public GameObject target;
 
@@ -32,17 +37,18 @@ public class BuildingController : MonoBehaviour
 
     void Start()
     {
-        
+        attackController = GetComponentInChildren<AttackController>();
     }
 
     void Update()
     {
+        TargetCheck();
+
         switch (buildingState)
         {
             case BUILDINGSTATE.IDLE:
-                TargetCheck();
 
-                if(target != null && buildingType == BUILDINGTYPE.ATTACKTYPE)
+                if(target != null && (buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER))
                 {
                     buildingState = BUILDINGSTATE.ATTACK;
                 }
@@ -51,13 +57,27 @@ public class BuildingController : MonoBehaviour
             case BUILDINGSTATE.ATTACK: 
                 if(target != null)
                 {
-                    transform.LookAt(target.transform.position);
-                    currentTme += Time.deltaTime;
-
-                    if(currentTme > attackCoolTime)
+                    if(buildingType == BUILDINGTYPE.BALISTA)
                     {
-                        currentTme = 0;
+                        transform.LookAt(target.transform.position);
+                        currentTme += Time.deltaTime;
 
+                        if (currentTme > attackCoolTime)
+                        {
+                            currentTme = 0;
+                            attackController.SingleAttack();
+                        }
+                    }
+                    else
+                    {
+                        towerHead.transform.LookAt(target.transform.position);
+                        currentTme += Time.deltaTime;
+
+                        if (currentTme > attackCoolTime)
+                        {
+                            currentTme = 0;
+                            attackController.RangeAttack();
+                        }
                     }
                 }
                 else
@@ -94,5 +114,15 @@ public class BuildingController : MonoBehaviour
 
             target = _coll[minIdx].gameObject;
         }
+        else
+        {
+            target = null;
+        }
      }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 }

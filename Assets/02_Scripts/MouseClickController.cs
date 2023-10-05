@@ -37,7 +37,7 @@ public class MouseClickController : MonoBehaviour
                             }
                             else
                             {
-                                GameObject _building = Instantiate(buildingPrefabs[0]);
+                                GameObject _building = Instantiate(buildingPrefabs[3]);
                                 _building.transform.position = hit.transform.position;
                             }
 

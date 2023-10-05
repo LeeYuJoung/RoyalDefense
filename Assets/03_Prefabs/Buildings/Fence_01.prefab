@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8465189857058414560}
   - component: {fileID: 8124661021924130637}
   - component: {fileID: 8830504434012929884}
+  - component: {fileID: 8980261836632103980}
   m_Layer: 0
   m_Name: Fence_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,3 +111,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2ec1de3a2e42546be1f7d84f2e1f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 0
+  buildingState: 0
+  attackController: {fileID: 0}
+  towerHead: {fileID: 0}
+  _bulletPrefabs: {fileID: 0}
+  target: {fileID: 0}
+  health: 50
+  power: 0
+  attackRange: 0
+  currentTme: 0
+  attackCoolTime: 0
+--- !u!208 &8980261836632103980
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465189857056407840}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.165, y: 0.73200005, z: 1.5040001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

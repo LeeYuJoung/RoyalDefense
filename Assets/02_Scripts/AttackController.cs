@@ -11,6 +11,8 @@ public class AttackController : MonoBehaviour
     }
     public ATTACKTYPE attackType;
 
+    public GameObject[] bulletPrefabs;
+
     public EnemyController enemyController;
     public PawnController pawnController;
 
