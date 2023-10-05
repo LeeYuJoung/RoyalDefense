@@ -25,6 +25,8 @@ public class BulletController : MonoBehaviour
         {
             other.GetComponent<EnemyController>().OnDamage(power);
         }
-        Destroy(gameObject);
+
+        explosionEffect.SetActive(true);
+        Destroy(gameObject, 2.0f);
     }
 }
