@@ -3102,7 +3102,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -42359,10 +42359,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinHouse
       objectReference: {fileID: 0}
-    - target: {fileID: 7602452811680190469, guid: 2e63f4c09f6e3c04ba39e4b0e13e3ea3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e63f4c09f6e3c04ba39e4b0e13e3ea3, type: 3}
 --- !u!1001 &1186897392
@@ -44341,7 +44337,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -44524,10 +44520,6 @@ PrefabInstance:
     - target: {fileID: 8465189857056407840, guid: 4d408370be36e834ca17e91d47038f34, type: 3}
       propertyPath: m_Name
       value: Fence_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8465189857056407840, guid: 4d408370be36e834ca17e91d47038f34, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d408370be36e834ca17e91d47038f34, type: 3}
@@ -45403,10 +45395,6 @@ PrefabInstance:
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_Name
       value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
@@ -46580,7 +46568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1280483402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55193,7 +55181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -58779,10 +58767,6 @@ PrefabInstance:
     - target: {fileID: 3749249109160609815, guid: 18760b792f20ff841aa48d88e823398b, type: 3}
       propertyPath: m_Name
       value: Ballista_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3749249109160609815, guid: 18760b792f20ff841aa48d88e823398b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18760b792f20ff841aa48d88e823398b, type: 3}

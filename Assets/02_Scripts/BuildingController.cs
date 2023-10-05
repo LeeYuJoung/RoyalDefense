@@ -24,8 +24,9 @@ public class BuildingController : MonoBehaviour
     public BUILDINGSTATE buildingState;
 
     public AttackController attackController;
+
+    public GameObject bulletPrefab;
     public GameObject towerHead;
-    public GameObject _bulletPrefabs;
     public GameObject target;
 
     public int health;
@@ -65,7 +66,7 @@ public class BuildingController : MonoBehaviour
                         if (currentTme > attackCoolTime)
                         {
                             currentTme = 0;
-                            attackController.SingleAttack();
+                            Shot();
                         }
                     }
                     else
@@ -76,7 +77,7 @@ public class BuildingController : MonoBehaviour
                         if (currentTme > attackCoolTime)
                         {
                             currentTme = 0;
-                            attackController.RangeAttack();
+                            Shot();
                         }
                     }
                 }
@@ -92,6 +93,18 @@ public class BuildingController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void Shot()
+    {
+        GameObject _bullet =  Instantiate(bulletPrefab, attackController.transform.position, Quaternion.identity);
+        _bullet.GetComponent<BulletController>().power = this.power;
+        _bullet.GetComponent<BulletController>().dir = attackController.transform;
+    }
+
+    public void OnDamage(int _power)
+    {
+
     }
 
     public void TargetCheck()

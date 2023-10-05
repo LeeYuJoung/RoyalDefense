@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
 
     public float currentTime;
+    public float hitTime;
     public float attackCoolTime = 2.0f;
     public float attackTime = 0.667f;
     public int power;
@@ -93,11 +94,11 @@ public class PlayerController : MonoBehaviour
             case PLAYERSTATE.DAMAGE:
                 animator.SetInteger("PLAYERSTATE", (int)playerState);
 
-                currentTime += Time.deltaTime;
-                if (currentTime > 0.667f)
+                hitTime += Time.deltaTime;
+                if (hitTime > 0.667f)
                 {
                     isDamage = false;
-                    currentTime = 0;
+                    hitTime = 0;
                     playerState = PLAYERSTATE.IDLE;
                 }
 
