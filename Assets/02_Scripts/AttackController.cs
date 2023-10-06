@@ -40,6 +40,7 @@ public class AttackController : MonoBehaviour
 
                     break;
                 case "Building":
+                    enemyController.target.GetComponent<BuildingController>().OnDamage(enemyController.power);
                     break;
                 default:
                     break;

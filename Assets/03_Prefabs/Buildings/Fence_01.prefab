@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8465189857057414432}
   - component: {fileID: 8465189857058414560}
   - component: {fileID: 8124661021924130637}
-  - component: {fileID: 8830504434012929884}
   - component: {fileID: 8980261836632103980}
-  m_Layer: 0
+  - component: {fileID: 8830504434012929884}
+  m_Layer: 7
   m_Name: Fence_01
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -94,11 +94,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8465189857056407840}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33028564, y: 1.4639658, z: 3.008164}
-  m_Center: {x: 0.00000014901161, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1.2179711, y: 1.4639658, z: 3.008164}
+  m_Center: {x: -0.064783305, y: 0, z: -0.00000047683716}
+--- !u!208 &8980261836632103980
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465189857056407840}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.165, y: 0.73200005, z: 1.5040001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &8830504434012929884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,27 +130,12 @@ MonoBehaviour:
   buildingType: 0
   buildingState: 0
   attackController: {fileID: 0}
+  bulletPrefab: {fileID: 0}
   towerHead: {fileID: 0}
-  _bulletPrefabs: {fileID: 0}
   target: {fileID: 0}
   health: 50
   power: 0
   attackRange: 0
   currentTme: 0
   attackCoolTime: 0
---- !u!208 &8980261836632103980
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8465189857056407840}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.165, y: 0.73200005, z: 1.5040001}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
+  isDead: 0

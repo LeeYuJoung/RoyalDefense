@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static PlayerController;
 
 public class BuildingController : MonoBehaviour
 {
     public enum BUILDINGTYPE
     {
         DEFENCETYPE,
+        BARICADE,
         BALISTA,
-        TOWER
+        TOWER,
+        GOLDMINE
     }
     public BUILDINGTYPE buildingType;
 
@@ -36,6 +39,8 @@ public class BuildingController : MonoBehaviour
     public float currentTme;
     public float attackCoolTime;
 
+    public bool isDead = false;
+
     void Start()
     {
         attackController = GetComponentInChildren<AttackController>();
@@ -49,7 +54,7 @@ public class BuildingController : MonoBehaviour
         {
             case BUILDINGSTATE.IDLE:
 
-                if(target != null && (buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER))
+                if(target != null && (buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER || buildingType == BUILDINGTYPE.BARICADE))
                 {
                     buildingState = BUILDINGSTATE.ATTACK;
                 }
@@ -61,6 +66,21 @@ public class BuildingController : MonoBehaviour
                     if(buildingType == BUILDINGTYPE.BALISTA)
                     {
                         transform.LookAt(target.transform.position);
+                        Vector3 dir = transform.localRotation.eulerAngles;
+                        dir.x = 0;
+                        transform.localRotation = Quaternion.Euler(dir);
+
+                        currentTme += Time.deltaTime;
+
+                        if (currentTme > attackCoolTime)
+                        {
+                            currentTme = 0;
+                            Shot();
+                        }
+                    }
+                    else if(buildingType == BUILDINGTYPE.TOWER)
+                    {
+                        towerHead.transform.LookAt(target.transform.position);
                         currentTme += Time.deltaTime;
 
                         if (currentTme > attackCoolTime)
@@ -71,13 +91,12 @@ public class BuildingController : MonoBehaviour
                     }
                     else
                     {
-                        towerHead.transform.LookAt(target.transform.position);
                         currentTme += Time.deltaTime;
 
                         if (currentTme > attackCoolTime)
                         {
                             currentTme = 0;
-                            Shot();
+                            target.GetComponent<EnemyController>().OnDamage(power);
                         }
                     }
                 }
@@ -104,7 +123,13 @@ public class BuildingController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
+        health -= _power;
 
+        if (health <= 0)
+        {
+            isDead = true;
+            Destroy(gameObject, 1.25f);
+        }
     }
 
     public void TargetCheck()

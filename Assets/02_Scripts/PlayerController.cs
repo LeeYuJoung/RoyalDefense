@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour
     public void OnDamage(int _power)
     {
         isDamage = true;
-        currentTime = 0;
         health -= _power;
         playerState = PLAYERSTATE.DAMAGE;
 

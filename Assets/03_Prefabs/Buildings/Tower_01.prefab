@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2ec1de3a2e42546be1f7d84f2e1f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 2
+  buildingType: 3
   buildingState: 0
   attackController: {fileID: 0}
   bulletPrefab: {fileID: 5825405905069274551, guid: f32dfbcaddc283245ab68922a0977079, type: 3}
@@ -87,6 +87,7 @@ MonoBehaviour:
   attackRange: 8
   currentTme: 0
   attackCoolTime: 5
+  isDead: 0
 --- !u!1001 &8855211671144224654
 PrefabInstance:
   m_ObjectHideFlags: 0

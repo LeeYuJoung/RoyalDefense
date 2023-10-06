@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3679396493825528088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649458822885746064}
+  - component: {fileID: 6141305209750791325}
+  - component: {fileID: 1560139591643943862}
+  - component: {fileID: 1092036570783047828}
+  m_Layer: 0
+  m_Name: BallistaArrow00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &649458822885746064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679396493825528088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 717724000299347919}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6141305209750791325
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679396493825528088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1560139591643943862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679396493825528088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6962736, y: 0.117023826, z: 0.4553613}
+  m_Center: {x: 0.44434068, y: 0.025350511, z: -0.0033214092}
+--- !u!114 &1092036570783047828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679396493825528088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545a2383ef48e414eb59ef9cf656581a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: {fileID: 3749249109160609815, guid: 18760b792f20ff841aa48d88e823398b, type: 3}
+  dir: {fileID: 0}
+  explosionEffect: {fileID: 7312855587821265890}
+  moveSpeed: 10
+  balistaSpeed: 15
+  destroyTime: 0.15
+  power: 0
+--- !u!1001 &4893862060552472080
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 649458822885746064}
+    m_Modifications:
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341167665675711999, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+      propertyPath: m_Name
+      value: Ballista Arrow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+--- !u!4 &717724000299347919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5341167665675282911, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+  m_PrefabInstance: {fileID: 4893862060552472080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7312855587821265890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2780417469136561650, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+  m_PrefabInstance: {fileID: 4893862060552472080}
+  m_PrefabAsset: {fileID: 0}

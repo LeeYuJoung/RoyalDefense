@@ -45,7 +45,6 @@ public class EnemyController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         health = maxHealth;
-        navAgent.stoppingDistance = attackDistance;
     }
 
     void Update()
@@ -71,11 +70,12 @@ public class EnemyController : MonoBehaviour
                 break;
             case LIVINGENTITYSTATE.WALK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
+                navAgent.isStopped = false;
                 navAgent.speed = moveSpeed;
 
                 float distance = Vector3.Distance(transform.position, target.position);
 
-                if(distance < attackDistance)
+                if (distance < attackDistance)
                 {
                     enemyState = LIVINGENTITYSTATE.ATTACK;
                 }
@@ -87,6 +87,8 @@ public class EnemyController : MonoBehaviour
                 break;
             case LIVINGENTITYSTATE.ATTACK:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
+                navAgent.isStopped = true;
+                navAgent.velocity = Vector3.zero;
                 transform.LookAt(target.position);
 
                 if (currentTime > attackCoolTime)

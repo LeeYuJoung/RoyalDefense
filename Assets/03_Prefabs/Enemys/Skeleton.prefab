@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6930756606409362030}
   - component: {fileID: 7464504695025175979}
   - component: {fileID: 1014865338}
+  - component: {fileID: 1795149181899458395}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Enemy
@@ -105,12 +106,28 @@ MonoBehaviour:
   moveSpeed: 1
   rotateSpeed: 0
   power: 5
-  attackDistance: 2.5
+  attackDistance: 2.6
   attackCoolTime: 2
   currentTime: 0
   hitTime: 0
   isDead: 0
   isDamage: 0
+--- !u!54 &1795149181899458395
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711238464763020857}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5854901647100891053
 PrefabInstance:
   m_ObjectHideFlags: 0

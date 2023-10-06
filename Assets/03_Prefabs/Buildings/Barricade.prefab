@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6098728875878112460}
   - component: {fileID: 6098728875877309676}
   - component: {fileID: 6098728875876212268}
-  m_Layer: 0
+  - component: {fileID: 5326289493488047623}
+  - component: {fileID: 9212414196075999792}
+  m_Layer: 7
   m_Name: Barricade
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +85,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5326289493488047623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098728875878400236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8614286, y: 2.2039306, z: 2.9752424}
+  m_Center: {x: 0.013225377, y: 0, z: 3.4100646e-17}
+--- !u!114 &9212414196075999792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098728875878400236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2ec1de3a2e42546be1f7d84f2e1f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingType: 1
+  buildingState: 0
+  attackController: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  towerHead: {fileID: 0}
+  target: {fileID: 0}
+  health: 80
+  power: 2
+  attackRange: 3
+  currentTme: 0
+  attackCoolTime: 1.5
+  isDead: 0

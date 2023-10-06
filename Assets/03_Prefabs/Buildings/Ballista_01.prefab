@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1217159238482816627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 540534934371311637}
-  m_Layer: 9
-  m_Name: FirePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &540534934371311637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217159238482816627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3749249109160609809}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3749249109160609815
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +32,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7559050627243440578}
-  - {fileID: 540534934371311637}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,7 +79,7 @@ MonoBehaviour:
   buildingType: 1
   buildingState: 0
   attackController: {fileID: 0}
-  bulletPrefab: {fileID: 5341167665675711999, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
+  bulletPrefab: {fileID: 3679396493825528088, guid: 873673bdb41456e4082b6237e95f18b7, type: 3}
   towerHead: {fileID: 0}
   target: {fileID: 0}
   health: 100
@@ -119,6 +87,7 @@ MonoBehaviour:
   attackRange: 8
   currentTme: 0
   attackCoolTime: 3
+  isDead: 0
 --- !u!1001 &3749249109575331678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,10 +98,6 @@ PrefabInstance:
     - target: {fileID: 6696613285537614524, guid: cf42fa510456f994a947dc2e4e4d892b, type: 3}
       propertyPath: m_Name
       value: Ballista
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696613285537614524, guid: cf42fa510456f994a947dc2e4e4d892b, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6696613285537912476, guid: cf42fa510456f994a947dc2e4e4d892b, type: 3}
       propertyPath: m_RootOrder
