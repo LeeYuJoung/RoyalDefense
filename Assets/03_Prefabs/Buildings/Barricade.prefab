@@ -116,9 +116,15 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   towerHead: {fileID: 0}
   target: {fileID: 0}
+  level: 1
   health: 80
+  createPrice: 2
+  upgradePrice: 4
   power: 2
-  attackRange: 3
   currentTme: 0
   attackCoolTime: 1.5
+  attackRange: 3
+  goldCoolTime: 0
+  goldPercent: 0
+  diaPercent: 0
   isDead: 0

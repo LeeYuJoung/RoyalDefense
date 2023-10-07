@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int gold = 0;
     public int diamond = 0;
 
+    public float currentTime;
+    public float nightTime;
+
     public bool isNight = false;
     public bool isDead = false;
 
@@ -24,5 +27,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (isNight)
+        {
+            NightTime();
+        }
+    }
 
+    public void NightTime()
+    {
+        currentTime += Time.deltaTime;
+        UIManager.Instance().nightTimeSlider.value = currentTime / nightTime;
+
+        if(currentTime > nightTime)
+        {
+            currentTime = 0;
+            UIManager.Instance().IsMorning();
+            isNight = false;
+        }
+    }
 }

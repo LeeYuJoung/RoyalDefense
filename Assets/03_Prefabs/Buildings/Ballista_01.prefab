@@ -196,7 +196,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3679396493825528088, guid: 873673bdb41456e4082b6237e95f18b7, type: 3}
   towerHead: {fileID: 0}
   target: {fileID: 0}
+  level: 1
   health: 100
+  createPrice: 4
+  upgradePrice: 8
   power: 5
   currentTme: 0
   attackCoolTime: 5

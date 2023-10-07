@@ -33,7 +33,10 @@ public class BuildingController : MonoBehaviour
     public GameObject towerHead;
     public GameObject target;
 
+    public int level = 1;
     public int health;
+    public int createPrice;
+    public int upgradePrice;
     public int power;
 
     public float currentTme;
@@ -58,6 +61,9 @@ public class BuildingController : MonoBehaviour
         switch (buildingState)
         {
             case BUILDINGSTATE.IDLE:
+                if (!GameManager.Instance().isNight)
+                    return;
+
                 if ((buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER || buildingType == BUILDINGTYPE.BARICADE))
                 {
                     buildingState = BUILDINGSTATE.ATTACK;
@@ -85,8 +91,11 @@ public class BuildingController : MonoBehaviour
 
                 break;
             case BUILDINGSTATE.ATTACK:
-                currentTme += Time.deltaTime;
-                UIManager.Instance().BuildingSlider(GetComponentInChildren<Slider>(), currentTme, attackCoolTime);
+                if(buildingType != BUILDINGTYPE.BARICADE)
+                {
+                    currentTme += Time.deltaTime;
+                    UIManager.Instance().BuildingSlider(GetComponentInChildren<Slider>(), currentTme, attackCoolTime);
+                }
 
                 if (target != null)
                 {
