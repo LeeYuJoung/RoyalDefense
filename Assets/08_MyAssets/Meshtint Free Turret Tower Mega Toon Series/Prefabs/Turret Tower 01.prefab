@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4519941387849242}
   - component: {fileID: 33089451506451912}
   - component: {fileID: 23466980061535014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4939996705135754}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret Tower 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 4795538350151362}
   - component: {fileID: 33586998647412368}
   - component: {fileID: 23027622446349308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret Tower 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7845105336766703030}
   - component: {fileID: 5476327769793391276}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,9 +245,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  bulletPrefabs:
-  - {fileID: 5341167665675711999, guid: b3f9f43de9a7ab84a934bca95d9d435f, type: 3}
-  - {fileID: 5825405905069274551, guid: f32dfbcaddc283245ab68922a0977079, type: 3}
   enemyController: {fileID: 0}
   pawnController: {fileID: 0}
-  buildingController: {fileID: 0}

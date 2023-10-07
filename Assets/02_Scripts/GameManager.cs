@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+    public int gold = 0;
+    public int diamond = 0;
+
     public bool isNight = false;
+    public bool isDead = false;
 
     void Start()
     {

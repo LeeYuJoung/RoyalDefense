@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using static PlayerController;
 
 public class BuildingController : MonoBehaviour
@@ -35,9 +36,13 @@ public class BuildingController : MonoBehaviour
     public int health;
     public int power;
 
-    public float attackRange;
     public float currentTme;
     public float attackCoolTime;
+    public float attackRange;
+
+    public float goldCoolTime;
+    public int goldPercent;
+    public int diaPercent;
 
     public bool isDead = false;
 
@@ -53,15 +58,37 @@ public class BuildingController : MonoBehaviour
         switch (buildingState)
         {
             case BUILDINGSTATE.IDLE:
-
-                if(target != null && (buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER || buildingType == BUILDINGTYPE.BARICADE))
+                if ((buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER || buildingType == BUILDINGTYPE.BARICADE))
                 {
                     buildingState = BUILDINGSTATE.ATTACK;
                 }
+                else if(buildingType == BUILDINGTYPE.GOLDMINE)
+                {
+                    currentTme += Time.deltaTime;
+                    UIManager.Instance().BuildingSlider(GetComponentInChildren<Slider>(), currentTme, goldCoolTime);
+
+                    if(currentTme > goldCoolTime)
+                    {
+                        int rdmNum = Random.Range(1, 100);
+                        currentTme = 0;
+
+                        if (rdmNum > 10)
+                        {
+                            GameManager.Instance().gold += goldPercent;
+                        }
+                        else
+                        {
+                            GameManager.Instance().diamond += diaPercent;
+                        }
+                    }
+                }
 
                 break;
-            case BUILDINGSTATE.ATTACK: 
-                if(target != null)
+            case BUILDINGSTATE.ATTACK:
+                currentTme += Time.deltaTime;
+                UIManager.Instance().BuildingSlider(GetComponentInChildren<Slider>(), currentTme, attackCoolTime);
+
+                if (target != null)
                 {
                     if(buildingType == BUILDINGTYPE.BALISTA)
                     {
@@ -69,8 +96,6 @@ public class BuildingController : MonoBehaviour
                         Vector3 dir = transform.localRotation.eulerAngles;
                         dir.x = 0;
                         transform.localRotation = Quaternion.Euler(dir);
-
-                        currentTme += Time.deltaTime;
 
                         if (currentTme > attackCoolTime)
                         {
@@ -81,7 +106,6 @@ public class BuildingController : MonoBehaviour
                     else if(buildingType == BUILDINGTYPE.TOWER)
                     {
                         towerHead.transform.LookAt(target.transform.position);
-                        currentTme += Time.deltaTime;
 
                         if (currentTme > attackCoolTime)
                         {
@@ -91,19 +115,12 @@ public class BuildingController : MonoBehaviour
                     }
                     else
                     {
-                        currentTme += Time.deltaTime;
-
                         if (currentTme > attackCoolTime)
                         {
                             currentTme = 0;
                             target.GetComponent<EnemyController>().OnDamage(power);
                         }
                     }
-                }
-                else
-                {
-                    currentTme = 0;
-                    buildingState = BUILDINGSTATE.IDLE;
                 }
 
                 break;   

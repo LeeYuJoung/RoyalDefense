@@ -5,9 +5,9 @@ using UnityEngine;
 public class MouseClickController : MonoBehaviour
 {
     public GameObject[] buildingPrefabs;
+    public GameObject _object;
 
     public RaycastHit hit;
-    public GameObject _object;
 
     void Start()
     {
@@ -35,10 +35,11 @@ public class MouseClickController : MonoBehaviour
                                 _object = null;
                                 Time.timeScale = 1.0f;
                             }
-                            else
+                            else if(!GameManager.Instance().isNight && UIManager.Instance().buildingBuy)
                             {
-                                GameObject _building = Instantiate(buildingPrefabs[2]);
+                                GameObject _building = Instantiate(buildingPrefabs[UIManager.Instance().buildingNum]);
                                 _building.transform.position = hit.transform.position;
+                                UIManager.Instance().buildingBuy = false;
                             }
 
                             break;
