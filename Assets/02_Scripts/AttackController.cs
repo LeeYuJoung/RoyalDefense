@@ -33,11 +33,12 @@ public class AttackController : MonoBehaviour
             {
                 case "King":
                     enemyController.target.GetComponent<PlayerController>().OnDamage(enemyController.power);
-
+                    break;
+                case "Casle":
+                    enemyController.target.GetComponent<PlayerController>().OnDamage(enemyController.power);
                     break;
                 case "Pawn":
                     enemyController.target.GetComponent<PawnController>().OnDamage(enemyController.power);
-
                     break;
                 case "Building":
                     enemyController.target.GetComponent<BuildingController>().OnDamage(enemyController.power);

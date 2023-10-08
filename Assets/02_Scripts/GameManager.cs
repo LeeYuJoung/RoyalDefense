@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+    public int days = 0;
     public int gold = 0;
     public int diamond = 0;
 
@@ -43,8 +44,16 @@ public class GameManager : MonoBehaviour
         if(currentTime > nightTime)
         {
             currentTime = 0;
-            UIManager.Instance().IsMorning();
             isNight = false;
+
+            UIManager.Instance().Victory();
         }
+    }
+
+    public void InitCasle()
+    {
+        PlayerController _casle = GameObject.Find("Casle").GetComponent<PlayerController>();
+        _casle.maxHealth += 10;
+        _casle.health += 10;
     }
 }

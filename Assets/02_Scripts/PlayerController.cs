@@ -47,23 +47,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(1) && currentTime > attackCoolTime)
+        if(tag != "Casle")
         {
-            currentTime = 0;
-            isAttack = true;
-            playerState = PLAYERSTATE.ATTACK;
-        }
+            if (Input.GetMouseButtonDown(1) && currentTime > attackCoolTime)
+            {
+                currentTime = 0;
+                isAttack = true;
+                playerState = PLAYERSTATE.ATTACK;
+            }
 
-        StateCheck();
-        Move();
+            StateCheck();
+            Move();
+        }
     }
 
     public void StateCheck()
     {
         if(isDead)
         {
-            // 게임 오버 UI 활성화
-
+            UIManager.Instance().GameOver();
             return;
         }
 
@@ -165,9 +167,16 @@ public class PlayerController : MonoBehaviour
         health -= _power;
         playerState = PLAYERSTATE.DAMAGE;
 
+        if (CompareTag("Casle"))
+        {
+            UIManager.Instance().casleSlider.value = (float) health / maxHealth;
+        }
+
         if (health <= 0)
         {
             isDead = true;
+            GameManager.Instance().isDead = true;
+            UIManager.Instance().GameOver();
             playerState = PLAYERSTATE.DIE;
         }
     }

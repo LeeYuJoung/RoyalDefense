@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 1
-  target: {fileID: 0}
+  target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
   maxHealth: 50
   health: 50
   moveSpeed: 1
   rotateSpeed: 0
-  power: 5
-  attackDistance: 2.6
+  power: 3
+  attackDistance: 4.5
   attackCoolTime: 2
   currentTime: 0
   hitTime: 0

@@ -24,8 +24,11 @@ public class PawnController : MonoBehaviour
     public Transform moveTarget;
     public Transform attackTarget;
 
+    public int level = 1;
     public int maxHealth;
     public int health;
+    public int createPrice;
+    public int upgradePrice;
 
     public float moveSpeed;
     public float rotateSpeed;

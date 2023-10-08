@@ -81,6 +81,8 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   maxHealth: 100
   health: 0
+  createPrice: 3
+  upgradePrice: 6
   moveSpeed: 2
   rotateSpeed: 0
   power: 5
@@ -124,25 +126,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FootmanPolyart
       objectReference: {fileID: 0}
-    - target: {fileID: 928723032, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: dcaabb7ae2058e74b918a56029cae8eb, type: 2}
     - target: {fileID: 928723033, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 928723033, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 928723033, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 928723033, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 928723033, guid: 44e54165d41e34c41ba73a629630ce03, type: 3}
       propertyPath: m_LocalPosition.x

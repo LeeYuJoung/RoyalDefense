@@ -58,6 +58,11 @@ public class EnemyController : MonoBehaviour
         if (isDead)
             return;
 
+        if (!GameManager.Instance().isNight)
+        {
+            enemyState = LIVINGENTITYSTATE.IDLE;
+        }
+
         currentTime += Time.deltaTime;
 
         switch (enemyState)
@@ -66,6 +71,13 @@ public class EnemyController : MonoBehaviour
                 break;
             case LIVINGENTITYSTATE.IDLE:
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
+                navAgent.isStopped = true;
+                navAgent.velocity = Vector3.zero;
+
+                if (GameManager.Instance().isNight)
+                {
+                    enemyState = LIVINGENTITYSTATE.WALK;
+                }
 
                 break;
             case LIVINGENTITYSTATE.WALK:
@@ -106,7 +118,6 @@ public class EnemyController : MonoBehaviour
                 }
 
                 distance = Vector3.Distance(transform.position, target.position);
-
                 if(distance > attackDistance)
                 {
                     enemyState = LIVINGENTITYSTATE.WALK;
@@ -143,7 +154,6 @@ public class EnemyController : MonoBehaviour
     public void OnDamage(int _power)
     {
         health -= _power;
-        enemyState = LIVINGENTITYSTATE.HIT;
 
         if (health <= 0)
         {
@@ -153,7 +163,7 @@ public class EnemyController : MonoBehaviour
 
     public void TargetCheck()
     {
-        Collider[] _coll = Physics.OverlapSphere(transform.position, 40.0f, 1 << 7);
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 100.0f, 1 << 7);
 
         if (_coll.Length > 0)
         {

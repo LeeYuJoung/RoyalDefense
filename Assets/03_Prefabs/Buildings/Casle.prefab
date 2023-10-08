@@ -2389,9 +2389,10 @@ GameObject:
   - component: {fileID: 8804067532030890555}
   - component: {fileID: 8792703578025216249}
   - component: {fileID: 7451200060851565599}
+  - component: {fileID: 203659030705545670}
   m_Layer: 7
   m_Name: Casle
-  m_TagString: Building
+  m_TagString: Casle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2486,6 +2487,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.9281483, y: 6.975555, z: 5.5999994}
   m_Center: {x: -0.000010371208, y: 3.4780529, z: 0.016314387}
+--- !u!114 &203659030705545670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814596721328325003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61de0ceb5c9228445bb28ef6fd6eacca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerState: 0
+  h: 0
+  v: 0
+  moveSpeed: 3
+  rotateSpeed: 2
+  health: 100
+  maxHealth: 100
+  currentTime: 0
+  hitTime: 0
+  attackCoolTime: 2
+  attackTime: 0.667
+  power: 0
+  isAttack: 0
+  isDamage: 0
+  isDead: 0
 --- !u!1 &8814644836663276031
 GameObject:
   m_ObjectHideFlags: 0

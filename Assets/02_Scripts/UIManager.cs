@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,12 +25,17 @@ public class UIManager : MonoBehaviour
 
     public GameObject shopPanel;
     public GameObject createPanel;
+    public GameObject victoryPanel;
+    public GameObject gameoverPanel;
+
+    public Slider casleSlider;
+
+    public Text daysText;
     public Text goldText;
     public Text diaText;
 
     public Slider nightTimeSlider;
     public Text nightText;
-    public Text daysText;
 
     public GameObject[] createPossiblePanels;
     public int[] createPrices;
@@ -96,7 +103,11 @@ public class UIManager : MonoBehaviour
 
     public void CreateTrueButton()
     {
-        GameManager.Instance().gold -= currentCreateObject.GetComponent<BuildingController>().createPrice;
+        if (currentCreateObject.CompareTag("Building"))
+            GameManager.Instance().gold -= currentCreateObject.GetComponent<BuildingController>().createPrice;
+        else if(currentCreateObject.CompareTag("Pawn"))
+            GameManager.Instance().gold -= currentCreateObject.GetComponent<PawnController>().createPrice;
+
         createPanel.SetActive(false);
     }
 
@@ -141,11 +152,39 @@ public class UIManager : MonoBehaviour
     public void NextStageButton()
     {
         nightText.text = "b";
+        GameManager.Instance().days += 1;
+        GameManager.Instance().nightTime += 15.0f;
         GameManager.Instance().isNight = true;
+
+        daysText.text = String.Format("DAYS {0:00}", GameManager.Instance().days);
+    }
+
+    public void Victory()
+    {
+        victoryPanel.SetActive(true);
     }
 
     public void IsMorning()
     {
         nightText.text = "c";
+        nightTimeSlider.value = 0;
+        // 조명 변경
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        gameoverPanel.SetActive(true);
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+
+    public void GameExitButton()
+    {
+        Application.Quit();
     }
 }
