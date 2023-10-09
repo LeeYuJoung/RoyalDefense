@@ -198,8 +198,8 @@ MonoBehaviour:
   target: {fileID: 0}
   level: 1
   health: 100
-  createPrice: 4
-  upgradePrice: 8
+  createPrice: 3
+  upgradePrice: 6
   power: 5
   currentTme: 0
   attackCoolTime: 5

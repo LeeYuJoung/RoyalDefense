@@ -91,13 +91,13 @@ public class BuildingController : MonoBehaviour
 
                 break;
             case BUILDINGSTATE.ATTACK:
-                if(buildingType != BUILDINGTYPE.BARICADE)
+                if(buildingType != BUILDINGTYPE.BARICADE && GameManager.Instance().isNight)
                 {
                     currentTme += Time.deltaTime;
                     UIManager.Instance().BuildingSlider(GetComponentInChildren<Slider>(), currentTme, attackCoolTime);
                 }
 
-                if (target != null)
+                if (target != null && GameManager.Instance().isNight)
                 {
                     if(buildingType == BUILDINGTYPE.BALISTA)
                     {

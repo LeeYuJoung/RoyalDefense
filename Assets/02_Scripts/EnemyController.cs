@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Collider _collider;
     public Transform target;
+    public Slider hpSlider;
 
     public int maxHealth;
     public int health;
@@ -28,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
     public float rotateSpeed;
     public int power;
+    public int getGold;
 
     public float attackDistance;
     public float attackCoolTime;
@@ -154,10 +157,12 @@ public class EnemyController : MonoBehaviour
     public void OnDamage(int _power)
     {
         health -= _power;
+        hpSlider.value = (float)health / maxHealth;
 
         if (health <= 0)
         {
             enemyState = LIVINGENTITYSTATE.DIE;
+            GameManager.Instance().gold += getGold;
         }
     }
 
@@ -180,6 +185,15 @@ public class EnemyController : MonoBehaviour
             }
 
             target = _coll[minIdx].transform;
+
+            if (target.CompareTag("Casle"))
+            {
+                attackDistance = 4.5f;
+            }
+            else
+            {
+                attackDistance = 3.0f;
+            }
         }
     }
 }

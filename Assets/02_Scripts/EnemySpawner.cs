@@ -8,8 +8,9 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPos;
 
     public int[] enemyHealths;
-    public float[] enemyPowers;
-    public float[] enemyspeeds;
+    public int[] enemyPowers;
+    public float[] enemySpeeds;
+    public int[] enemyGolds;
 
     public float currentTme;
     public float spawnCoolTime;
@@ -34,15 +35,49 @@ public class EnemySpawner : MonoBehaviour
         if (currentTme > spawnCoolTime)
         {
             currentTme = 0; ;
-            int enemyIdx = Random.Range(0, enemyPrefabs.Length);
+            int enemyIdx = Random.Range(0, 100);
             int posIdx = Random.Range(0, spawnPos.Length);
 
-            Instantiate(enemyPrefabs[enemyIdx], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
+            if(enemyIdx > 20)
+            {
+                GameObject _enemy = Instantiate(enemyPrefabs[0], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
+                _enemy.GetComponent<EnemyController>().maxHealth = enemyHealths[0];
+                _enemy.GetComponent<EnemyController>().power = enemyPowers[0];
+                _enemy.GetComponent<EnemyController>().moveSpeed = enemySpeeds[0];
+                _enemy.GetComponent<EnemyController>().getGold = enemyGolds[0];
+            }
+            else
+            {
+                enemyIdx = Random.Range(0, 100);
+
+                if (enemyIdx > 20)
+                {
+                    GameObject _enemy = Instantiate(enemyPrefabs[1], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
+                    _enemy.GetComponent<EnemyController>().maxHealth = enemyHealths[1];
+                    _enemy.GetComponent<EnemyController>().power = enemyPowers[1];
+                    _enemy.GetComponent<EnemyController>().moveSpeed = enemySpeeds[1];
+                    _enemy.GetComponent<EnemyController>().getGold = enemyGolds[1];
+                }
+                else
+                {
+                    GameObject _enemy = Instantiate(enemyPrefabs[2], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
+                    _enemy.GetComponent<EnemyController>().maxHealth = enemyHealths[2];
+                    _enemy.GetComponent<EnemyController>().power = enemyPowers[2];
+                    _enemy.GetComponent<EnemyController>().moveSpeed = enemySpeeds[2];
+                    _enemy.GetComponent<EnemyController>().getGold = enemyGolds[2];
+                }
+            }
         }
     }
 
     public void InitEnemy()
     {
-
+        for(int i = 0; i < enemyPrefabs.Length; i++)
+        {
+            enemyHealths[i] += 10;
+            enemyPowers[i] += 5;
+            enemySpeeds[i] += 0.5f;
+            enemyGolds[i] += 1;
+        }
     }
 }

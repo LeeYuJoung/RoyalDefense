@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PawnController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PawnController : MonoBehaviour
     private NavMeshAgent navAgent;
     private Animator animator;
     private Collider _collider;
+    public Slider hpSlider;
 
     public Transform moveTarget;
     public Transform attackTarget;
@@ -63,6 +65,11 @@ public class PawnController : MonoBehaviour
     {
         if (isDead)
             return;
+
+        if (!GameManager.Instance().isNight)
+        {
+            pawnState = LIVINGENTITYSTATE.IDLE;
+        }
 
         currentTime += Time.deltaTime;
 
@@ -141,6 +148,7 @@ public class PawnController : MonoBehaviour
         }
 
         health -= _power;
+        hpSlider.value = (float)health / maxHealth;
     }
 
     public void TargetCheck()

@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
         else if (buildingType.Equals("ShieldBearer"))
         {
             objectsNum = 6;
-            objectsPos = new Vector3(0, 0.3f, 0);
+            objectsPos = new Vector3(0, 0.0f, 0); 
         }
         else if (buildingType.Equals("Wizard"))
         {
@@ -168,7 +168,6 @@ public class UIManager : MonoBehaviour
     {
         nightText.text = "c";
         nightTimeSlider.value = 0;
-        // 조명 변경
     }
 
     public void GameOver()

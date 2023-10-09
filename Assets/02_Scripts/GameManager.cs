@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+    public Light mainLight;
+
     public int days = 0;
     public int gold = 0;
     public int diamond = 0;
@@ -32,7 +34,12 @@ public class GameManager : MonoBehaviour
     {
         if (isNight)
         {
+            StartCoroutine(LerpColor(Color.black));
             NightTime();
+        }
+        else if(!isNight && days != 0)
+        {
+            StartCoroutine(LerpColor(Color.white));
         }
     }
 
@@ -55,5 +62,14 @@ public class GameManager : MonoBehaviour
         PlayerController _casle = GameObject.Find("Casle").GetComponent<PlayerController>();
         _casle.maxHealth += 10;
         _casle.health += 10;
+    }
+
+    public IEnumerator LerpColor(Color _changeColor)
+    {
+        while(mainLight.color != _changeColor)
+        {
+            mainLight.color = Color.Lerp(mainLight.color, _changeColor, 0.025f);
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 }
