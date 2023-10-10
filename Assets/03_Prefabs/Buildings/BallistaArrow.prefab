@@ -96,12 +96,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3522714919971737811, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -138,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 3522714919971737822, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
       propertyPath: m_Name
       value: BalistaEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522714919971737822, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d7d1e378a17d045a8668f4622a8b66, type: 3}

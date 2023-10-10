@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 1524899706752004697}
   - component: {fileID: 8533029542216508448}
   - component: {fileID: 1187932772810775564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wizard
   m_TagString: Pawn
   m_Icon: {fileID: 0}
@@ -414,6 +414,8 @@ Transform:
   m_Children:
   - {fileID: 8808165980381083880}
   - {fileID: 8944792397010541110}
+  - {fileID: 1407155457779599549}
+  - {fileID: 2386575658876813232}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -483,6 +485,8 @@ MonoBehaviour:
   hpSlider: {fileID: 1696707047922518828}
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}
+  attackEffect: {fileID: 8187366543443218695}
+  attackRangeEffect: {fileID: 2324605150552501765}
   level: 1
   maxHealth: 80
   health: 0
@@ -490,14 +494,148 @@ MonoBehaviour:
   upgradePrice: 10
   moveSpeed: 2
   rotateSpeed: 0
-  power: 10
-  attackDistance: 6
-  attackCoolTime: 5
+  power: 20
+  attackDistance: 10
+  attackCoolTime: 20
   currentTime: 0
   hitTime: 0
   isDead: 0
   isAttack: 0
   isHit: 0
+--- !u!1001 &1459625464397082459
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2051197735942480395}
+    m_Modifications:
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340585773711326812, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+      propertyPath: m_Name
+      value: WizardAttackEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+--- !u!4 &1407155457779599549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 560304316552062950, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+  m_PrefabInstance: {fileID: 1459625464397082459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8187366543443218695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7340585773711326812, guid: 84a413246fb40d9478d864bca374ec6a, type: 3}
+  m_PrefabInstance: {fileID: 1459625464397082459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5405230095738710258
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2051197735942480395}
+    m_Modifications:
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728621383256114935, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+      propertyPath: m_Name
+      value: WizardAttackEffect_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+--- !u!1 &2324605150552501765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7728621383256114935, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+  m_PrefabInstance: {fileID: 5405230095738710258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2386575658876813232 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7646529187761854274, guid: 3cf77542c0a57514fa5e411f978d71ef, type: 3}
+  m_PrefabInstance: {fileID: 5405230095738710258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5505128014198178029
 PrefabInstance:
   m_ObjectHideFlags: 0

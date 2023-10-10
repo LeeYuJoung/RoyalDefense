@@ -77655,7 +77655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 8711238464763020857, guid: bee0fb0fd5204464b975de9c5ab37d6b, type: 3}
+  - {fileID: 2545010773939393715, guid: ff894bd48baab06498052ade4865de08, type: 3}
   - {fileID: 2943501283878307995, guid: 77803c10137794041a63f93559e6759c, type: 3}
   - {fileID: 1406479764423286063, guid: a6d72c548205b7c4bbcdb6e86cc8f47e, type: 3}
   spawnPos:
@@ -77667,7 +77667,7 @@ MonoBehaviour:
   - {fileID: 679548324}
   - {fileID: 1258569014}
   enemyHealths: 280000005a0000006e000000
-  enemyPowers: fdffffff0000000003000000
+  enemyPowers: ffffffff0200000005000000
   enemySpeeds:
   - 0.3
   - 0.1

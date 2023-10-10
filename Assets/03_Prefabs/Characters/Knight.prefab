@@ -258,6 +258,8 @@ MonoBehaviour:
   hpSlider: {fileID: 6624718859679257174}
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}
+  attackEffect: {fileID: 0}
+  attackRangeEffect: {fileID: 0}
   level: 1
   maxHealth: 100
   health: 0
@@ -265,7 +267,7 @@ MonoBehaviour:
   upgradePrice: 6
   moveSpeed: 2
   rotateSpeed: 0
-  power: 8
+  power: 10
   attackDistance: 3
   attackCoolTime: 2
   currentTime: 0

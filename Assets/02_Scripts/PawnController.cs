@@ -25,7 +25,9 @@ public class PawnController : MonoBehaviour
 
     public Transform moveTarget;
     public Transform attackTarget;
+
     public GameObject attackEffect;
+    public GameObject attackRangeEffect;
 
     public int level = 1;
     public int maxHealth;
@@ -102,10 +104,9 @@ public class PawnController : MonoBehaviour
 
                 break;
             case LIVINGENTITYSTATE.ATTACK:
-                animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
-
-                if(currentTime > attackCoolTime)
+                if (currentTime > attackCoolTime)
                 {
+                    animator.SetInteger("LIVINGENTITYSTATE", (int)pawnState);
                     currentTime = 0;
 
                     if (attackController.attackType == AttackController.ATTACKTYPE.SINGLE)
@@ -119,6 +120,11 @@ public class PawnController : MonoBehaviour
                         attackController.RangeAttack();
                         pawnState = LIVINGENTITYSTATE.IDLE;
                     }
+                }
+
+                if (attackTarget == null)
+                {
+                    pawnState = LIVINGENTITYSTATE.IDLE;
                 }
 
                 distance = Vector3.Distance(transform.position, attackTarget.position);
@@ -199,7 +205,19 @@ public class PawnController : MonoBehaviour
     IEnumerator OnWizardAttack()
     {
         attackEffect.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        attackRangeEffect.SetActive(true);
+
+        yield return new WaitForSeconds(4.0f);
+
         attackEffect.SetActive(false);
+        attackRangeEffect.SetActive(false);
+
+        pawnState = LIVINGENTITYSTATE.IDLE;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
     }
 }

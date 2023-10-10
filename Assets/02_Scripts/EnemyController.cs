@@ -190,7 +190,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Basic Traget : " + basicTarget.position);
             target = basicTarget;
         }
 
