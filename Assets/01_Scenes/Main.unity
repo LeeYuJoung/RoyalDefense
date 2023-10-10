@@ -78195,7 +78195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainLight: {fileID: 705507994}
   days: 0
-  gold: 30
+  gold: 20
   diamond: 0
   currentTime: 0
   nightTime: 35
@@ -88807,7 +88807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.500003
+      value: -4.5000014
       objectReference: {fileID: 0}
     - target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
       propertyPath: m_LocalPosition.y
@@ -88815,7 +88815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.400002
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
       propertyPath: m_LocalRotation.w

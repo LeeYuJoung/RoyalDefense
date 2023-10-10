@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3cb196f91979646b834e614058b48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 0
+  attackType: 1
   enemyController: {fileID: 0}
   pawnController: {fileID: 0}
 --- !u!114 &1187932772810775564

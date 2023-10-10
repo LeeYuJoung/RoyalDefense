@@ -55,6 +55,11 @@ public class AttackController : MonoBehaviour
 
     public void RangeAttack()
     {
+        Collider[] _enemys = Physics.OverlapSphere(transform.position, pawnController.attackDistance, 1 << 6);
 
+        for(int i = 0; i  < _enemys.Length; i++)
+        {
+            _enemys[i].GetComponent<EnemyController>().OnDamage(pawnController.power);
+        }
     }
 }

@@ -170,7 +170,7 @@ public class EnemyController : MonoBehaviour
         if (isDead)
             return;
 
-        Collider[] _coll = Physics.OverlapSphere(transform.position, 8.0f, 1 << 7);
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 5.0f, 1 << 7);
 
         if (_coll.Length > 0)
         {
@@ -190,12 +190,13 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Basic Traget : " + basicTarget.position);
             target = basicTarget;
         }
 
         if (target.CompareTag("Casle"))
         {
-            attackDistance = 3.0f;
+            attackDistance = 4.0f;
         }
         else if (target.CompareTag("Pawn"))
         {
@@ -223,6 +224,6 @@ public class EnemyController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 8);
+        Gizmos.DrawWireSphere(transform.position, 5);
     }
 }

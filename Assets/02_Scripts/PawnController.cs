@@ -25,6 +25,7 @@ public class PawnController : MonoBehaviour
 
     public Transform moveTarget;
     public Transform attackTarget;
+    public GameObject attackEffect;
 
     public int level = 1;
     public int maxHealth;
@@ -114,6 +115,7 @@ public class PawnController : MonoBehaviour
                     }
                     else
                     {
+                        StartCoroutine(OnWizardAttack());
                         attackController.RangeAttack();
                         pawnState = LIVINGENTITYSTATE.IDLE;
                     }
@@ -192,5 +194,12 @@ public class PawnController : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         Destroy(gameObject);
+    }
+
+    IEnumerator OnWizardAttack()
+    {
+        attackEffect.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        attackEffect.SetActive(false);
     }
 }
