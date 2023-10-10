@@ -276,8 +276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
-  target: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
   hpSlider: {fileID: 5139220194185283934}
+  basicTarget: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}
+  target: {fileID: 0}
   maxHealth: 0
   health: 0
   moveSpeed: 0

@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 enemyIdx = Random.Range(0, 100);
 
-                if (enemyIdx > 20)
+                if (enemyIdx > 10)
                 {
                     GameObject _enemy = Instantiate(enemyPrefabs[1], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
                     _enemy.GetComponent<EnemyController>().maxHealth = enemyHealths[1];

@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public float currentTime;
     public float nightTime;
 
+    public int health;
+    public int maxHealth;
+
     public bool isNight = false;
     public bool isDead = false;
 
@@ -57,18 +60,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnDamage(int _power)
+    {
+        health -= _power;
+        UIManager.Instance().casleSlider.value = (float)health / maxHealth;
+
+        if(health < 0)
+        {
+            isDead = true;
+            UIManager.Instance().GameOver();
+        }
+    }
+
     public void InitCasle()
     {
-        PlayerController _casle = GameObject.Find("Casle").GetComponent<PlayerController>();
-        _casle.maxHealth += 10;
-        _casle.health += 10;
+        maxHealth += 10;
+        health += 10;
     }
 
     public IEnumerator LerpColor(Color _changeColor)
     {
         while(mainLight.color != _changeColor)
         {
-            mainLight.color = Color.Lerp(mainLight.color, _changeColor, 0.025f);
+            mainLight.color = Color.Lerp(mainLight.color, _changeColor, 0.01f);
             yield return new WaitForSeconds(0.05f);
         }
     }

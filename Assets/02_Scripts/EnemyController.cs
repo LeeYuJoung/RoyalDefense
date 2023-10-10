@@ -21,8 +21,10 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navAgent;
     private Animator animator;
     private Collider _collider;
-    public Transform target;
     public Slider hpSlider;
+
+    public Transform basicTarget;
+    public Transform target;
 
     public int maxHealth;
     public int health;
@@ -61,12 +63,12 @@ public class EnemyController : MonoBehaviour
         if (isDead)
             return;
 
+        currentTime += Time.deltaTime;
+
         if (!GameManager.Instance().isNight)
         {
             enemyState = LIVINGENTITYSTATE.IDLE;
         }
-
-        currentTime += Time.deltaTime;
 
         switch (enemyState)
         {
@@ -104,7 +106,11 @@ public class EnemyController : MonoBehaviour
                 animator.SetInteger("LIVINGENTITYSTATE", (int)enemyState);
                 navAgent.isStopped = true;
                 navAgent.velocity = Vector3.zero;
+
                 transform.LookAt(target.position);
+                Vector3 dir = transform.localRotation.eulerAngles;
+                dir.x = 0;
+                transform.localRotation = Quaternion.Euler(dir);
 
                 if (currentTime > attackCoolTime)
                 {
@@ -139,14 +145,7 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case LIVINGENTITYSTATE.DIE:
-                animator.SetTrigger("DIE");
-                enemyState = LIVINGENTITYSTATE.None;
-
-                navAgent.enabled = false;
-                _collider.enabled = false;
-                isDead = true;
-
-                Destroy(gameObject, 0.5f);
+                StartCoroutine(OnDie());
 
                 break;
             default:
@@ -168,7 +167,10 @@ public class EnemyController : MonoBehaviour
 
     public void TargetCheck()
     {
-        Collider[] _coll = Physics.OverlapSphere(transform.position, 100.0f, 1 << 7);
+        if (isDead)
+            return;
+
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 8.0f, 1 << 7);
 
         if (_coll.Length > 0)
         {
@@ -185,15 +187,42 @@ public class EnemyController : MonoBehaviour
             }
 
             target = _coll[minIdx].transform;
-
-            if (target.CompareTag("Casle"))
-            {
-                attackDistance = 4.5f;
-            }
-            else
-            {
-                attackDistance = 3.0f;
-            }
         }
+        else
+        {
+            target = basicTarget;
+        }
+
+        if (target.CompareTag("Casle"))
+        {
+            attackDistance = 3.0f;
+        }
+        else if (target.CompareTag("Pawn"))
+        {
+            attackDistance = 3.0f;
+        }
+        else
+        {
+            attackDistance = 3.0f;
+        }
+    }
+
+    IEnumerator OnDie()
+    {
+        animator.SetTrigger("DIE");
+        _collider.enabled = false;
+        navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
+        isDead = true;
+
+        yield return new WaitForSeconds(1.2f);
+
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 8);
     }
 }

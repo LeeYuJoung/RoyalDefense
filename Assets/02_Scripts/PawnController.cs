@@ -57,8 +57,8 @@ public class PawnController : MonoBehaviour
 
     void Update()
     {
-        TargetCheck();
         StateCheck();
+        TargetCheck();
     }
 
     public void StateCheck()
@@ -66,12 +66,12 @@ public class PawnController : MonoBehaviour
         if (isDead)
             return;
 
+        currentTime += Time.deltaTime;
+
         if (!GameManager.Instance().isNight)
         {
             pawnState = LIVINGENTITYSTATE.IDLE;
         }
-
-        currentTime += Time.deltaTime;
 
         switch (pawnState)
         {
@@ -128,11 +128,7 @@ public class PawnController : MonoBehaviour
 
                 break;
             case LIVINGENTITYSTATE.DIE:
-                animator.SetTrigger("DIE");
-                pawnState = LIVINGENTITYSTATE.None;
-
-                _collider.enabled = false;
-                isDead = true;
+                StartCoroutine(OnDie());
 
                 break;
             default:
@@ -142,24 +138,28 @@ public class PawnController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
+        health -= _power;
+        hpSlider.value = (float)health / maxHealth;
+
         if (health <= 0)
         {
             pawnState = LIVINGENTITYSTATE.DIE;
         }
 
-        health -= _power;
-        hpSlider.value = (float)health / maxHealth;
     }
 
     public void TargetCheck()
     {
+        if (isDead)
+            return;
+
         if(pawnState == LIVINGENTITYSTATE.WALK)
         {
             return;
         }
 
         currentTime += Time.deltaTime;
-        Collider[] _coll = Physics.OverlapSphere(transform.position, 2.0f, 1 << 6);
+        Collider[] _coll = Physics.OverlapSphere(transform.position, 4.0f, 1 << 6);
 
         if (_coll.Length > 0)
         {
@@ -179,5 +179,18 @@ public class PawnController : MonoBehaviour
             transform.LookAt(attackTarget);
             pawnState = LIVINGENTITYSTATE.ATTACK;
         }
+    }
+
+    IEnumerator OnDie()
+    {
+        animator.SetTrigger("DIE");
+        _collider.enabled = false;
+        navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
+        isDead = true;
+
+        yield return new WaitForSeconds(1.0f);
+
+        Destroy(gameObject);
     }
 }
