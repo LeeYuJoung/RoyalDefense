@@ -78,7 +78,7 @@ public class BuildingController : MonoBehaviour
                         int rdmNum = Random.Range(1, 100);
                         currentTme = 0;
 
-                        if (rdmNum > 10)
+                        if (rdmNum > 15)
                         {
                             GameManager.Instance().gold += goldPercent;
                         }

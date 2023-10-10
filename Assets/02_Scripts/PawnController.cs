@@ -125,6 +125,7 @@ public class PawnController : MonoBehaviour
                 if (attackTarget == null)
                 {
                     pawnState = LIVINGENTITYSTATE.IDLE;
+                    return;
                 }
 
                 distance = Vector3.Distance(transform.position, attackTarget.position);

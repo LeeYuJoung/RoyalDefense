@@ -23,9 +23,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public GameObject mainPanel;
     public GameObject shopPanel;
+    public GameObject upgradePanel;
     public GameObject createPanel;
+    public GameObject sellPanel;
+    public GameObject deletePanel;
     public GameObject victoryPanel;
+    public GameObject deletePossiblePanel;
     public GameObject gameoverPanel;
 
     public Slider casleSlider;

@@ -77,7 +77,6 @@ public class EnemySpawner : MonoBehaviour
             enemyHealths[i] += 10;
             enemyPowers[i] += 3;
             enemySpeeds[i] += 0.25f;
-            enemyGolds[i] += 1;
         }
     }
 }

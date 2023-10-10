@@ -45,13 +45,34 @@ public class MouseClickController : MonoBehaviour
 
                             break;
                         case "Pawn":
-                            _object = hit.collider.gameObject;
-                            Time.timeScale = 0.25f;
+                            if (GameManager.Instance().isNight)
+                            {
+                                _object = hit.collider.gameObject;
+                                Time.timeScale = 0.25f;
+                            }
+                            UpgradeManager.Instance().UpgradeClick(hit.collider);
 
                             break;
                         case "Building":
+                            UpgradeManager.Instance().UpgradeClick(hit.collider);
+
                             break;
-                        case "King":
+                        case "Obstacle":
+                            if (!GameManager.Instance().isNight && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
+                            {
+                                UIManager.Instance().mainPanel.SetActive(false);
+                                UIManager.Instance().deletePanel.SetActive(true);
+
+                                if (GameManager.Instance().gold >= 4)
+                                {
+                                    UIManager.Instance().deletePossiblePanel.SetActive(false);
+                                }
+                                else
+                                {
+                                    UIManager.Instance().deletePossiblePanel.SetActive(true);
+                                }
+                            }
+
                             break;
                         default:
                             break;

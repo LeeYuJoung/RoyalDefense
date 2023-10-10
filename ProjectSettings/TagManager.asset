@@ -11,6 +11,8 @@ TagManager:
   - Building
   - Enemy
   - Pawns
+  - FxTemporaire
+  - Obstacle
   layers:
   - Default
   - TransparentFX
