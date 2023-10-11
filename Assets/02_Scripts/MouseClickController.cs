@@ -50,7 +50,11 @@ public class MouseClickController : MonoBehaviour
                                 _object = hit.collider.gameObject;
                                 Time.timeScale = 0.25f;
                             }
-                            UpgradeManager.Instance().UpgradeClick(hit.collider);
+
+                            if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
+                            {
+                                UpgradeManager.Instance().UpgradeClick(hit.collider);
+                            }
 
                             break;
                         case "Building":

@@ -37,12 +37,12 @@ public class GameManager : MonoBehaviour
     {
         if (isNight)
         {
-            StartCoroutine(LerpColor(Color.black));
+            //StartCoroutine(LerpColor(Color.black));
             NightTime();
         }
         else if(!isNight && days != 0)
         {
-            StartCoroutine(LerpColor(Color.white));
+            //StartCoroutine(LerpColor(Color.white));
         }
     }
 

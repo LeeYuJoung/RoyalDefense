@@ -73,6 +73,11 @@ public class PawnController : MonoBehaviour
 
         if (!GameManager.Instance().isNight)
         {
+            if(attackEffect != null)
+            {
+                attackEffect.SetActive(false);
+                attackRangeEffect.SetActive(false);
+            }
             pawnState = LIVINGENTITYSTATE.IDLE;
         }
 

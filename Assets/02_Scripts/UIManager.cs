@@ -36,7 +36,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionPanel;
     public Sprite[] optionSprits;
-
+    public Image SoundImage;
+    public Image StopImage;
+    
     public Slider casleSlider;
 
     public Text daysText;
@@ -208,6 +210,41 @@ public class UIManager : MonoBehaviour
             optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[1];
             optionPanel.SetActive(true);
         }
+    }
+
+    public void SoundButton()
+    {
+        AudioSource _audio = GameObject.Find("Sound").GetComponent<AudioSource>();
+
+        if(_audio.volume == 0)
+        {
+            _audio.volume = 1;
+            SoundImage.sprite = optionSprits[2];
+        }
+        else
+        {
+            _audio.volume = 0;
+            SoundImage.sprite = optionSprits[3];
+        }
+    }
+
+    public void GameStopButton()
+    {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            StopImage.sprite = optionSprits[4];
+        }
+        else
+        {
+            Time.timeScale = 0;
+            StopImage.sprite = optionSprits[5];
+        }
+    }
+
+    public void HomeButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void NextStageButton()
