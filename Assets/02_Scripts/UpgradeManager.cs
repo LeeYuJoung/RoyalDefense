@@ -34,14 +34,19 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeClick(Collider _object)
     {
-        if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf) 
-        {
-            UIManager.Instance().mainPanel.SetActive(false);
-            UIManager.Instance().upgradePanel.SetActive(true);
-            UIManager.Instance().pricePanel.SetActive(true);
-        }
+        UIManager.Instance().mainPanel.SetActive(false);
+        UIManager.Instance().upgradePanel.SetActive(true);
+        UIManager.Instance().pricePanel.SetActive(true);
 
+        UIManager.Instance().GoldTextChnage();
+        UIManager.Instance().DiaTextChange();
+
+        if (objectCollider != null && objectCollider != _object)
+        {
+            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+        }
         objectCollider = _object;
+        objectCollider.transform.GetChild(1).gameObject.SetActive(true);
 
         if (objectCollider.CompareTag("Pawn"))
         {
@@ -51,7 +56,7 @@ public class UpgradeManager : MonoBehaviour
             priceText.text = price + " D";
             levelText.text = string.Format("LV.{0:00}", level);
 
-            if(GameManager.Instance().diamond >= price)
+            if (GameManager.Instance().diamond >= price)
             {
                 possiblePanel.SetActive(false);
             }
@@ -78,7 +83,7 @@ public class UpgradeManager : MonoBehaviour
             }
         }
 
-        if(level >= 5)
+        if (level >= 5)
         {
             levelText.text = "MAX LV";
             possiblePanel.SetActive(true);
@@ -101,6 +106,14 @@ public class UpgradeManager : MonoBehaviour
         UIManager.Instance().GoldTextChnage();
         UIManager.Instance().DiaTextChange();
         UpgradeClick(objectCollider);
+    }
+
+    public void UpgradePanelClose()
+    {
+        if(objectCollider != null)
+        {
+            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void ObstacleDelete()

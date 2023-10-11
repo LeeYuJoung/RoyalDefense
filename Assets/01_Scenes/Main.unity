@@ -26779,6 +26779,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 336487159}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: InitObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &640708144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29079,6 +29091,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 336487159}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: InitObject
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41673,7 +41697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsPrefabs:
   - {fileID: 8465189857056407840, guid: 4d408370be36e834ca17e91d47038f34, type: 3}
-  - {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
+  - {fileID: 6095158026352296028, guid: 7f696266902bb12469384d4908433e33, type: 3}
   - {fileID: 3749249109160609815, guid: 18760b792f20ff841aa48d88e823398b, type: 3}
   - {fileID: 3336443977807289957, guid: 7f6a1c0eff2cfc748b1a0806c56132d5, type: 3}
   - {fileID: 7602452811680190469, guid: 2e63f4c09f6e3c04ba39e4b0e13e3ea3, type: 3}
@@ -75068,6 +75092,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 336487159}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradePanelClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 336487159}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
         m_MethodName: InitObject
         m_Mode: 1
         m_Arguments:
@@ -89230,7 +89266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2116757716
 RectTransform:
   m_ObjectHideFlags: 0

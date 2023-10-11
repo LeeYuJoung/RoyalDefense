@@ -165,9 +165,12 @@ public class UIManager : MonoBehaviour
     {
         GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
 
-        for (int i = 0; i < _buildings.Length; i++)
+        if( _buildings.Length > 0 )
         {
-            _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < _buildings.Length; i++)
+            {
+                _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+            }
         }
 
         UpgradeManager.Instance().sellPrice.text = "0 G";
@@ -181,9 +184,12 @@ public class UIManager : MonoBehaviour
     {
         GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
 
-        for (int i = 0; i < _buildings.Length; i++)
+        if( _buildings.Length > 0)
         {
-            _buildings[i].transform.GetChild(0).gameObject.SetActive(false);
+            for (int i = 0; i < _buildings.Length; i++)
+            {
+                _buildings[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
     }
 
