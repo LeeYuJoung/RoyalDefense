@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     public GameObject victoryPanel;
     public GameObject deletePossiblePanel;
     public GameObject gameoverPanel;
+    public GameObject pricePanel;
 
     public Slider casleSlider;
 
@@ -102,6 +103,7 @@ public class UIManager : MonoBehaviour
 
         shopPanel.SetActive(false);
         createPanel.SetActive(true);
+        pricePanel.SetActive(false);
 
         objectsBuy = true;
     }
@@ -139,6 +141,11 @@ public class UIManager : MonoBehaviour
         goldText.text = GameManager.Instance().gold + " G";
     }
 
+    public void DiaTextChange()
+    {
+        diaText.text = GameManager.Instance().diamond + " D";
+    }
+
     public void BuyPossibleCheck()
     {
         for(int i = 0; i < createPossiblePanels.Length; i++)
@@ -151,6 +158,32 @@ public class UIManager : MonoBehaviour
             {
                 createPossiblePanels[i].SetActive(true);
             }
+        }
+    }
+
+    public void SellPanelOpen()
+    {
+        GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
+
+        for (int i = 0; i < _buildings.Length; i++)
+        {
+            _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        UpgradeManager.Instance().sellPrice.text = "0 G";
+        UpgradeManager.Instance().buildingName.text = "NONE";
+
+        GoldTextChnage();
+        DiaTextChange();
+    }
+
+    public void SellPanelClose()
+    {
+        GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
+
+        for (int i = 0; i < _buildings.Length; i++)
+        {
+            _buildings[i].transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

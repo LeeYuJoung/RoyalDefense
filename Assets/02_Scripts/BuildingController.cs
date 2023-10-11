@@ -33,10 +33,13 @@ public class BuildingController : MonoBehaviour
     public GameObject towerHead;
     public GameObject target;
 
+    public string buildingName;
     public int level = 1;
     public int health;
+    public int maxHealth;
     public int createPrice;
     public int upgradePrice;
+    public int sellPrice;
     public int power;
 
     public float currentTme;
@@ -51,6 +54,7 @@ public class BuildingController : MonoBehaviour
 
     void Start()
     {
+        health = maxHealth;
         attackController = GetComponentInChildren<AttackController>();
     }
 
@@ -183,6 +187,25 @@ public class BuildingController : MonoBehaviour
             target = null;
         }
      }
+
+    public void LevelUP()
+    {
+        level += 1;
+        maxHealth += 30;
+        power += 5;
+        attackCoolTime -= 0.5f;
+        attackRange += 3.0f;
+        goldCoolTime -= 5.0f;
+
+        health = maxHealth;
+        upgradePrice += 3;
+        sellPrice += 2;
+
+        if (bulletPrefab != null)
+        {
+            bulletPrefab.GetComponent<BulletController>().power = this.power;
+        }
+    }
 
     private void OnDrawGizmos()
     {

@@ -14,7 +14,6 @@ public class BulletController : MonoBehaviour
     public float balistaSpeed = 15.0f;
 
     public float destroyTime;
-
     public int power;
 
     void Start()

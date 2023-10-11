@@ -488,14 +488,14 @@ MonoBehaviour:
   attackEffect: {fileID: 8187366543443218695}
   attackRangeEffect: {fileID: 2324605150552501765}
   level: 1
-  maxHealth: 80
   health: 0
+  maxHealth: 80
   createPrice: 5
-  upgradePrice: 10
+  upgradePrice: 4
   moveSpeed: 2
   rotateSpeed: 0
   power: 20
-  attackDistance: 10
+  attackDistance: 15
   attackCoolTime: 20
   currentTime: 0
   hitTime: 0

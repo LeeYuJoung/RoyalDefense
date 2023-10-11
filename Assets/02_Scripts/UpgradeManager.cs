@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class UpgradeManager : MonoBehaviour
     {
         return _instance;
     }
+
+    public Text sellPrice;
+    public Text buildingName;
 
     public GameObject possiblePanel;
     public Text priceText;
@@ -34,11 +38,12 @@ public class UpgradeManager : MonoBehaviour
         {
             UIManager.Instance().mainPanel.SetActive(false);
             UIManager.Instance().upgradePanel.SetActive(true);
+            UIManager.Instance().pricePanel.SetActive(true);
         }
 
         objectCollider = _object;
 
-        if (_object.CompareTag("Pawn"))
+        if (objectCollider.CompareTag("Pawn"))
         {
             price = objectCollider.GetComponent<PawnController>().upgradePrice;
             level = objectCollider.GetComponent<PawnController>().level;
@@ -82,6 +87,58 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeButton()
     {
+        if (objectCollider.CompareTag("Pawn"))
+        {
+            GameManager.Instance().diamond -= price;
+            objectCollider.GetComponent<PawnController>().LevelUP();
+        }
+        else
+        {
+            GameManager.Instance().gold -= price;
+            objectCollider.GetComponent<BuildingController>().LevelUP();
+        }
+
+        UIManager.Instance().GoldTextChnage();
+        UIManager.Instance().DiaTextChange();
         UpgradeClick(objectCollider);
+    }
+
+    public void ObstacleDelete()
+    {
+        GameManager.Instance().gold -= 4;
+
+        if (objectCollider != null)
+        {
+            UIManager.Instance().GoldTextChnage();
+            UIManager.Instance().DiaTextChange();
+            Destroy(objectCollider.gameObject);
+        }
+    }
+
+    public void BuildingSelect(Collider _building)
+    {
+        objectCollider = _building;
+        price = objectCollider.GetComponent<BuildingController>().sellPrice;
+
+        buildingName.text = objectCollider.GetComponent<BuildingController>().buildingName;
+        sellPrice.text =  price + " G";
+    }
+
+    public void BuildingSellButton()
+    {
+        GameManager.Instance().gold += price;
+
+        if(objectCollider != null)
+        {
+            UIManager.Instance().GoldTextChnage();
+            UIManager.Instance().DiaTextChange();
+            Destroy(objectCollider.gameObject);
+        }
+    }
+
+    public void InitObject()
+    {
+        price = 0;
+        objectCollider = null;
     }
 }

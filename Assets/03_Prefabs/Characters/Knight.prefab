@@ -261,10 +261,10 @@ MonoBehaviour:
   attackEffect: {fileID: 0}
   attackRangeEffect: {fileID: 0}
   level: 1
-  maxHealth: 100
   health: 0
+  maxHealth: 100
   createPrice: 3
-  upgradePrice: 6
+  upgradePrice: 2
   moveSpeed: 2
   rotateSpeed: 0
   power: 10

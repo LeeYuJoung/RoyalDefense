@@ -30,8 +30,8 @@ public class PawnController : MonoBehaviour
     public GameObject attackRangeEffect;
 
     public int level = 1;
-    public int maxHealth;
     public int health;
+    public int maxHealth;
     public int createPrice;
     public int upgradePrice;
 
@@ -116,7 +116,7 @@ public class PawnController : MonoBehaviour
                     }
                     else
                     {
-                        StartCoroutine(OnWizardAttack());
+                        StartCoroutine(WizardAttack());
                         attackController.RangeAttack();
                         pawnState = LIVINGENTITYSTATE.IDLE;
                     }
@@ -143,18 +143,6 @@ public class PawnController : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    public void OnDamage(int _power)
-    {
-        health -= _power;
-        hpSlider.value = (float)health / maxHealth;
-
-        if (health <= 0)
-        {
-            pawnState = LIVINGENTITYSTATE.DIE;
-        }
-
     }
 
     public void TargetCheck()
@@ -190,6 +178,18 @@ public class PawnController : MonoBehaviour
         }
     }
 
+    public void OnDamage(int _power)
+    {
+        health -= _power;
+        hpSlider.value = (float)health / maxHealth;
+
+        if (health <= 0)
+        {
+            pawnState = LIVINGENTITYSTATE.DIE;
+        }
+
+    }
+
     IEnumerator OnDie()
     {
         animator.SetTrigger("DIE");
@@ -203,7 +203,7 @@ public class PawnController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator OnWizardAttack()
+    IEnumerator WizardAttack()
     {
         attackEffect.SetActive(true);
         attackRangeEffect.SetActive(true);
@@ -214,6 +214,18 @@ public class PawnController : MonoBehaviour
         attackRangeEffect.SetActive(false);
 
         pawnState = LIVINGENTITYSTATE.IDLE;
+    }
+
+    public void LevelUP()
+    {
+        level += 1;
+        maxHealth += 50;
+        power += 5;
+        attackCoolTime -= 0.5f;
+        moveSpeed -= 0.2f;
+
+        health = maxHealth;
+        upgradePrice += 2;
     }
 
     private void OnDrawGizmos()

@@ -56,12 +56,18 @@ public class MouseClickController : MonoBehaviour
                         case "Building":
                             UpgradeManager.Instance().UpgradeClick(hit.collider);
 
+                            if (UIManager.Instance().sellPanel.activeSelf)
+                            {
+                                UpgradeManager.Instance().BuildingSelect(hit.collider);
+                            }
+
                             break;
                         case "Obstacle":
                             if (!GameManager.Instance().isNight && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
                             {
                                 UIManager.Instance().mainPanel.SetActive(false);
                                 UIManager.Instance().deletePanel.SetActive(true);
+                                UIManager.Instance().pricePanel.SetActive(true);
 
                                 if (GameManager.Instance().gold >= 4)
                                 {
@@ -71,6 +77,7 @@ public class MouseClickController : MonoBehaviour
                                 {
                                     UIManager.Instance().deletePossiblePanel.SetActive(true);
                                 }
+                                UpgradeManager.Instance().objectCollider = hit.collider;
                             }
 
                             break;
