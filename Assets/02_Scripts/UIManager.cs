@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     public GameObject gameoverPanel;
     public GameObject pricePanel;
 
+    public GameObject optionPanel;
+    public Sprite[] optionSprits;
+
     public Slider casleSlider;
 
     public Text daysText;
@@ -190,6 +193,20 @@ public class UIManager : MonoBehaviour
             {
                 _buildings[i].transform.GetChild(0).gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void OptionButton()
+    {
+        if (optionPanel.activeSelf)
+        {
+            optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[0];
+            optionPanel.SetActive(false);
+        }
+        else
+        {
+            optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[1];
+            optionPanel.SetActive(true);
         }
     }
 
