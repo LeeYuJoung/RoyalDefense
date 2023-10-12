@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
     public GameObject[] createPossiblePanels;
     public int[] createPrices;
 
+    public GameObject[] descriptionImages;
+
     public GameObject currentCreateObject;
     public Vector3 objectsPos;
     public int objectsNum;
@@ -111,6 +113,16 @@ public class UIManager : MonoBehaviour
         pricePanel.SetActive(false);
 
         objectsBuy = true;
+    }
+
+    public void DescriptionOpen(int idx)
+    {
+        descriptionImages[idx].SetActive(true);
+    }
+
+    public void DescriptionClose(int idx)
+    {
+        descriptionImages[idx].SetActive(false);
     }
 
     public void CreateTrueButton()

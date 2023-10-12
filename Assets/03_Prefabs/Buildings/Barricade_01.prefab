@@ -169,7 +169,7 @@ MonoBehaviour:
   sellPrice: 1
   power: 3
   currentTme: 0
-  attackCoolTime: 2.5
+  attackCoolTime: 3
   attackRange: 3
   goldCoolTime: 0
   goldPercent: 0

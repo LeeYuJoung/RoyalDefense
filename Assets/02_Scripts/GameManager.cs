@@ -37,12 +37,12 @@ public class GameManager : MonoBehaviour
     {
         if (isNight)
         {
-            //StartCoroutine(LerpColor(Color.black));
+            StartCoroutine(NightLight());
             NightTime();
         }
         else if(!isNight && days != 0)
         {
-            //StartCoroutine(LerpColor(Color.white));
+            StartCoroutine(MorningLight());
         }
     }
 
@@ -78,12 +78,21 @@ public class GameManager : MonoBehaviour
         health += 10;
     }
 
-    public IEnumerator LerpColor(Color _changeColor)
+    public IEnumerator MorningLight()
     {
-        while(mainLight.color != _changeColor)
+        while(mainLight.intensity < 1.1f)
         {
-            mainLight.color = Color.Lerp(mainLight.color, _changeColor, 0.01f);
-            yield return new WaitForSeconds(0.05f);
+            mainLight.intensity += 0.01f;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public IEnumerator NightLight()
+    {
+        while (mainLight.intensity > 0.0f)
+        {
+            mainLight.intensity -= 0.01f;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

@@ -116,6 +116,16 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    public void ObstacleCheck(Collider _object)
+    {
+        if (objectCollider != null && objectCollider != _object)
+        {
+            objectCollider.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        objectCollider = _object;
+        objectCollider.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public void ObstacleDelete()
     {
         GameManager.Instance().gold -= 4;
@@ -128,11 +138,24 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    public void ObstacleClose()
+    {
+        if (objectCollider != null)
+        {
+            objectCollider.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
     public void BuildingSelect(Collider _building)
     {
+        if (objectCollider != null && objectCollider != _building)
+        {
+            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+        }
         objectCollider = _building;
-        price = objectCollider.GetComponent<BuildingController>().sellPrice;
+        objectCollider.transform.GetChild(1).gameObject.SetActive(true);
 
+        price = objectCollider.GetComponent<BuildingController>().sellPrice;
         buildingName.text = objectCollider.GetComponent<BuildingController>().buildingName;
         sellPrice.text =  price + " G";
     }
@@ -146,6 +169,14 @@ public class UpgradeManager : MonoBehaviour
             UIManager.Instance().GoldTextChnage();
             UIManager.Instance().DiaTextChange();
             Destroy(objectCollider.gameObject);
+        }
+    }
+
+    public void BuildingSellClose()
+    {
+        if (objectCollider != null)
+        {
+            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 

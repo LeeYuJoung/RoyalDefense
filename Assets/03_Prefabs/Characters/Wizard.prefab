@@ -495,7 +495,7 @@ MonoBehaviour:
   upgradePrice: 4
   moveSpeed: 2
   rotateSpeed: 0
-  power: 20
+  power: 15
   attackDistance: 15
   attackCoolTime: 20
   currentTime: 0

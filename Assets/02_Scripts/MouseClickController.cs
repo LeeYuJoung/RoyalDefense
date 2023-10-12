@@ -51,14 +51,14 @@ public class MouseClickController : MonoBehaviour
                                 Time.timeScale = 0.25f;
                             }
 
-                            if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
+                            if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
                             {
                                 UpgradeManager.Instance().UpgradeClick(hit.collider);
                             }
 
                             break;
                         case "Building":
-                            if(!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
+                            if(!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
                             {
                                 UpgradeManager.Instance().UpgradeClick(hit.collider);
                             }
@@ -75,6 +75,8 @@ public class MouseClickController : MonoBehaviour
                                 UIManager.Instance().mainPanel.SetActive(false);
                                 UIManager.Instance().deletePanel.SetActive(true);
                                 UIManager.Instance().pricePanel.SetActive(true);
+                                UIManager.Instance().GoldTextChnage();
+                                UIManager.Instance().DiaTextChange();
 
                                 if (GameManager.Instance().gold >= 4)
                                 {
@@ -85,9 +87,7 @@ public class MouseClickController : MonoBehaviour
                                     UIManager.Instance().deletePossiblePanel.SetActive(true);
                                 }
 
-                                UIManager.Instance().GoldTextChnage();
-                                UIManager.Instance().DiaTextChange();
-                                UpgradeManager.Instance().objectCollider = hit.collider;
+                                UpgradeManager.Instance().ObstacleCheck(hit.collider);
                             }
 
                             break;
