@@ -70,7 +70,7 @@ public class MouseClickController : MonoBehaviour
 
                             break;
                         case "Obstacle":
-                            if (!GameManager.Instance().isNight && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
+                            if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
                             {
                                 UIManager.Instance().mainPanel.SetActive(false);
                                 UIManager.Instance().deletePanel.SetActive(true);

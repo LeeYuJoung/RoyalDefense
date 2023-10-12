@@ -44,6 +44,8 @@ public class UIManager : MonoBehaviour
     public Text daysText;
     public Text goldText;
     public Text diaText;
+    public Text killCountText;
+    public Text getGoldText;
 
     public Slider nightTimeSlider;
     public Text nightText;
@@ -272,12 +274,16 @@ public class UIManager : MonoBehaviour
     public void Victory()
     {
         victoryPanel.SetActive(true);
+        killCountText.text = "KILL MONSTER" + "\n" + String.Format("{0:00}", GameManager.Instance().killCount);
+        getGoldText.text = "GOLD" + "\n" + String.Format("{0:00}", GameManager.Instance().getGold);
+        nightText.text = "c";
     }
 
     public void IsMorning()
     {
-        nightText.text = "c";
         nightTimeSlider.value = 0;
+        GameManager.Instance().killCount = 0;
+        GameManager.Instance().getGold = 0;
     }
 
     public void GameOver()

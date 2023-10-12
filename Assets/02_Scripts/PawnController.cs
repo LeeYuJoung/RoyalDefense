@@ -231,6 +231,8 @@ public class PawnController : MonoBehaviour
 
         health = maxHealth;
         upgradePrice += 2;
+
+        hpSlider.value = (float)health / maxHealth;
     }
 
     private void OnDrawGizmos()

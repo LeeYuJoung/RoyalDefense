@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2654176323817158314}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8117601139105985984}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5014825055091355699}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1972608629723113587}
   - component: {fileID: 786529073223039071}
   - component: {fileID: 4489383923733730544}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Barricade_01
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   buildingName: BARRICADE
   level: 1
   health: 0
-  maxHealth: 80
+  maxHealth: 50
   createPrice: 2
   upgradePrice: 4
   sellPrice: 1
@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_IsActive
@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6098728875878400236, guid: f248df5a1d842cf419461acc48b9d088, type: 3}
       propertyPath: m_IsActive

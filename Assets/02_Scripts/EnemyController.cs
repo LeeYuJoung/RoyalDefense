@@ -162,6 +162,8 @@ public class EnemyController : MonoBehaviour
         {
             enemyState = LIVINGENTITYSTATE.DIE;
             GameManager.Instance().gold += getGold;
+            GameManager.Instance().getGold += getGold;
+            GameManager.Instance().killCount++;
         }
     }
 

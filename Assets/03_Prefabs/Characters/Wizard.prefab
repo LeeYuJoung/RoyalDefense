@@ -497,7 +497,7 @@ MonoBehaviour:
   rotateSpeed: 0
   power: 15
   attackDistance: 15
-  attackCoolTime: 20
+  attackCoolTime: 25
   currentTime: 0
   hitTime: 0
   isDead: 0

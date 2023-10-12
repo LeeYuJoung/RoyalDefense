@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+    public PostProcessVolume postProcessing;
     public Light mainLight;
 
     public int days = 0;
@@ -21,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     public int health;
     public int maxHealth;
+
+    public int killCount = 0;
+    public int getGold = 0;
 
     public bool isNight = false;
     public bool isDead = false;
@@ -80,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator MorningLight()
     {
-        while(mainLight.intensity < 1.1f)
+        while (mainLight.intensity < 1.1f)
         {
             mainLight.intensity += 0.01f;
             yield return new WaitForSeconds(0.5f);
@@ -89,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator NightLight()
     {
-        while (mainLight.intensity > 0.0f)
+        while (mainLight.intensity > 0.15f)
         {
             mainLight.intensity -= 0.01f;
             yield return new WaitForSeconds(0.5f);

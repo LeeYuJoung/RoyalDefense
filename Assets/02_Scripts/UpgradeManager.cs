@@ -86,6 +86,7 @@ public class UpgradeManager : MonoBehaviour
         if (level >= 5)
         {
             levelText.text = "MAX LV";
+            priceText.text = "";
             possiblePanel.SetActive(true);
         }
     }
