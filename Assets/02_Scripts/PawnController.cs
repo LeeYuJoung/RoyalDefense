@@ -121,10 +121,16 @@ public class PawnController : MonoBehaviour
                     }
                     else
                     {
+                        pawnState = LIVINGENTITYSTATE.IDLE;
                         StartCoroutine(WizardAttack());
                         attackController.RangeAttack();
-                        pawnState = LIVINGENTITYSTATE.IDLE;
                     }
+                }
+                else if(attackController.attackType != AttackController.ATTACKTYPE.SINGLE)
+                {
+                    animator.SetInteger("LIVINGENTITYSTATE", 0);
+                    navAgent.isStopped = true;
+                    navAgent.velocity = Vector3.zero;
                 }
 
                 if (attackTarget == null)
@@ -217,8 +223,6 @@ public class PawnController : MonoBehaviour
 
         attackEffect.SetActive(false);
         attackRangeEffect.SetActive(false);
-
-        pawnState = LIVINGENTITYSTATE.IDLE;
     }
 
     public void LevelUP()

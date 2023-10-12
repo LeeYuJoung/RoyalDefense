@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
         for(int i = 0; i < enemyPrefabs.Length; i++)
         {
             enemyHealths[i] += 10;
-            enemyPowers[i] += 3;
+            enemyPowers[i] += 2;
             enemySpeeds[i] += 0.25f;
         }
     }

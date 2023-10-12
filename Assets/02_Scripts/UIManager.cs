@@ -274,8 +274,8 @@ public class UIManager : MonoBehaviour
     public void Victory()
     {
         victoryPanel.SetActive(true);
-        killCountText.text = "KILL MONSTER" + "\n" + String.Format("{0:00}", GameManager.Instance().killCount);
-        getGoldText.text = "GOLD" + "\n" + String.Format("{0:00}", GameManager.Instance().getGold);
+        killCountText.text = "KILL MONSTER" + "\n" + String.Format("<color=red>{0:00}</color>", GameManager.Instance().killCount);
+        getGoldText.text = "GOLD" + "\n" + String.Format("<color=orange>{0:00}</color>", GameManager.Instance().getGold);
         nightText.text = "c";
     }
 

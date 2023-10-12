@@ -48,7 +48,7 @@ public class MouseClickController : MonoBehaviour
                             if (GameManager.Instance().isNight)
                             {
                                 _object = hit.collider.gameObject;
-                                Time.timeScale = 0.25f;
+                                Time.timeScale = 0.2f;
                             }
 
                             if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)

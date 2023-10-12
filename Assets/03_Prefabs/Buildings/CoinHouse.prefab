@@ -633,7 +633,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 2.707, y: 2.9740002, z: 2.709}
+  m_Extents: {x: 3.25, y: 3, z: 3.25}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -681,7 +681,7 @@ MonoBehaviour:
   currentTme: 0
   attackCoolTime: 0
   attackRange: 0
-  goldCoolTime: 50
+  goldCoolTime: 45
   goldPercent: 4
   diaPercent: 2
   isDead: 0
