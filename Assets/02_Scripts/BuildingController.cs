@@ -32,6 +32,7 @@ public class BuildingController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject towerHead;
     public GameObject target;
+    public GameObject dieEffect;
 
     public string buildingName;
     public int level = 1;
@@ -158,7 +159,8 @@ public class BuildingController : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;
-            Destroy(gameObject, 1.25f);
+            dieEffect.SetActive(true);
+            Destroy(gameObject, 0.5f);
         }
     }
 
