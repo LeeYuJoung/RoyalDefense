@@ -186,6 +186,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5825405905069274551, guid: f32dfbcaddc283245ab68922a0977079, type: 3}
   towerHead: {fileID: 8854158996868720280}
   target: {fileID: 0}
+  dieEffect: {fileID: 0}
   buildingName: TOWER
   level: 1
   health: 0
