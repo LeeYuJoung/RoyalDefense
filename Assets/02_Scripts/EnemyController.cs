@@ -197,7 +197,7 @@ public class EnemyController : MonoBehaviour
 
         if (target.CompareTag("Casle"))
         {
-            attackDistance = 4.0f;
+            attackDistance = 5.5f;
         }
         else if (target.CompareTag("Pawn"))
         {

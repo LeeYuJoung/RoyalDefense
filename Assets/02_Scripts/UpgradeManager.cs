@@ -151,10 +151,10 @@ public class UpgradeManager : MonoBehaviour
     {
         if (objectCollider != null && objectCollider != _building)
         {
-            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+            objectCollider.transform.GetChild(2).gameObject.SetActive(false);
         }
         objectCollider = _building;
-        objectCollider.transform.GetChild(1).gameObject.SetActive(true);
+        objectCollider.transform.GetChild(2).gameObject.SetActive(true);
 
         price = objectCollider.GetComponent<BuildingController>().sellPrice;
         buildingName.text = objectCollider.GetComponent<BuildingController>().buildingName;
@@ -177,7 +177,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (objectCollider != null)
         {
-            objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+            objectCollider.transform.GetChild(2).gameObject.SetActive(false);
         }
     }
 
