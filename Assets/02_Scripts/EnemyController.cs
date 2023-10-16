@@ -201,11 +201,11 @@ public class EnemyController : MonoBehaviour
         }
         else if (target.CompareTag("Pawn"))
         {
-            attackDistance = 3.0f;
+            attackDistance = 3.5f;
         }
         else
         {
-            attackDistance = 3.0f;
+            attackDistance = 3.5f;
         }
     }
 
