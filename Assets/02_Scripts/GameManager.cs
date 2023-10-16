@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public PostProcessVolume postProcessing;
     public Light mainLight;
+    public GameObject[] enemySpawnEffects;
 
     public int days = 0;
     public int gold = 0;
@@ -62,6 +63,11 @@ public class GameManager : MonoBehaviour
             isNight = false;
 
             UIManager.Instance().Victory();
+
+            for(int i  = 0; i < enemySpawnEffects.Length; i++)
+            {
+                enemySpawnEffects[i].SetActive(false);
+            }
         }
     }
 

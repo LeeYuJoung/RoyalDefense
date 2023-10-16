@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        DOTween.Init();
     }
 
     public GameObject mainPanel;
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
     public Sprite[] optionSprits;
     public Image SoundImage;
     public Image StopImage;
+    public Image doubleSpeedImage;
     
     public Slider casleSlider;
 
@@ -218,11 +222,15 @@ public class UIManager : MonoBehaviour
         {
             optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[0];
             optionPanel.SetActive(false);
+
+            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(350f, 0.6f);
         }
         else
         {
             optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[1];
             optionPanel.SetActive(true);
+
+            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(-225f, 0.6f);
         }
     }
 
@@ -253,6 +261,20 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0;
             StopImage.sprite = optionSprits[5];
+        }
+    }
+
+    public void DoubleSpeedButton()
+    {
+        if(Time.timeScale != 0 && Time.timeScale != 2 && GameManager.Instance().isNight)
+        {
+            Time.timeScale = 2;
+            doubleSpeedImage.sprite = optionSprits[7];
+        }
+        else if(Time.timeScale != 0 && Time.timeScale != 1 && GameManager.Instance().isNight)
+        {
+            Time.timeScale = 1;
+            doubleSpeedImage.sprite = optionSprits[6];
         }
     }
 

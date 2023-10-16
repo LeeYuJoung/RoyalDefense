@@ -24,11 +24,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if (GameManager.Instance().isNight)
         {
-            Spawn();
+            StartCoroutine(Spawn());
         }
     }
 
-    public void Spawn()
+    public IEnumerator Spawn()
     {
         currentTme += Time.deltaTime;
 
@@ -36,7 +36,11 @@ public class EnemySpawner : MonoBehaviour
         {
             currentTme = 0; ;
             int enemyIdx = Random.Range(0, 100);
+
             int posIdx = Random.Range(0, spawnPos.Length);
+
+            StartCoroutine(SpawnEffect(posIdx));
+            yield return new WaitForSeconds(0.5f);
 
             if(enemyIdx > 20)
             {
@@ -68,6 +72,13 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator SpawnEffect(int _idx)
+    {
+        GameManager.Instance().enemySpawnEffects[_idx].SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        GameManager.Instance().enemySpawnEffects[_idx].SetActive(false);
     }
 
     public void InitEnemy()
