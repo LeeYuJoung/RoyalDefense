@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -34,8 +35,10 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeClick(Collider _object)
     {
-        UIManager.Instance().mainPanel.SetActive(false);
         UIManager.Instance().upgradePanel.SetActive(true);
+        UIManager.Instance().upgradePanel.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+
+        UIManager.Instance().mainPanel.SetActive(false);
         UIManager.Instance().pricePanel.SetActive(true);
 
         UIManager.Instance().GoldTextChnage();
@@ -44,9 +47,11 @@ public class UpgradeManager : MonoBehaviour
         if (objectCollider != null && objectCollider != _object)
         {
             objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+            objectCollider.transform.GetChild(3).gameObject.SetActive(false);
         }
         objectCollider = _object;
         objectCollider.transform.GetChild(1).gameObject.SetActive(true);
+        objectCollider.transform.GetChild(3).gameObject.SetActive(true);
 
         if (objectCollider.CompareTag("Pawn"))
         {
@@ -106,14 +111,19 @@ public class UpgradeManager : MonoBehaviour
 
         UIManager.Instance().GoldTextChnage();
         UIManager.Instance().DiaTextChange();
+        objectCollider.transform.GetChild(3).localScale += new Vector3(3.0f, 0.0f, 3.0f);
+
         UpgradeClick(objectCollider);
     }
 
     public void UpgradePanelClose()
     {
-        if(objectCollider != null)
+        UIManager.Instance().upgradePanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => UIManager.Instance().upgradePanel.SetActive(false));
+
+        if (objectCollider != null)
         {
             objectCollider.transform.GetChild(1).gameObject.SetActive(false);
+            objectCollider.transform.GetChild(3).gameObject.SetActive(false);
         }
     }
 
@@ -129,6 +139,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void ObstacleDelete()
     {
+        UIManager.Instance().deletePanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => UIManager.Instance().deletePanel.SetActive(false));
         GameManager.Instance().gold -= 4;
 
         if (objectCollider != null)
@@ -141,6 +152,8 @@ public class UpgradeManager : MonoBehaviour
 
     public void ObstacleClose()
     {
+        UIManager.Instance().deletePanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => UIManager.Instance().deletePanel.SetActive(false));
+
         if (objectCollider != null)
         {
             objectCollider.transform.GetChild(0).gameObject.SetActive(false);

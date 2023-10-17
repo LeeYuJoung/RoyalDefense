@@ -30,7 +30,7 @@ public class BuildingController : MonoBehaviour
     public AttackController attackController;
 
     public GameObject bulletPrefab;
-    public GameObject towerHead;
+    public GameObject[] towerHead;
     public GameObject target;
     public GameObject dieEffect;
 
@@ -61,13 +61,15 @@ public class BuildingController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance().isNight)
+        {
+            return;
+        }
         TargetCheck();
 
         switch (buildingState)
         {
             case BUILDINGSTATE.IDLE:
-                if (!GameManager.Instance().isNight)
-                    return;
 
                 if ((buildingType == BUILDINGTYPE.BALISTA || buildingType == BUILDINGTYPE.TOWER || buildingType == BUILDINGTYPE.BARICADE))
                 {
@@ -119,7 +121,10 @@ public class BuildingController : MonoBehaviour
                     }
                     else if(buildingType == BUILDINGTYPE.TOWER)
                     {
-                        towerHead.transform.LookAt(target.transform.position);
+                        for(int i = 0; i < towerHead.Length; i++)
+                        {
+                            towerHead[i].transform.LookAt(target.transform.position);
+                        }
 
                         if (currentTme > attackCoolTime)
                         {

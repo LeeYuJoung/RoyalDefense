@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MouseClickController : MonoBehaviour
 {
@@ -33,7 +34,15 @@ public class MouseClickController : MonoBehaviour
                                 _object.GetComponent<PawnController>().pawnState = PawnController.LIVINGENTITYSTATE.WALK;
 
                                 _object = null;
-                                Time.timeScale = 1.0f;
+
+                                if(UIManager.Instance().doubleSpeedImage.sprite == UIManager.Instance().optionSprits[6])
+                                {
+                                    Time.timeScale = 1.0f;
+                                }
+                                else
+                                {
+                                    Time.timeScale = 2.0f;
+                                }
                             }
                             else if(!GameManager.Instance().isNight && UIManager.Instance().objectsBuy && !UIManager.Instance().shopPanel.activeSelf)
                             {
@@ -72,8 +81,10 @@ public class MouseClickController : MonoBehaviour
                         case "Obstacle":
                             if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
                             {
-                                UIManager.Instance().mainPanel.SetActive(false);
                                 UIManager.Instance().deletePanel.SetActive(true);
+                                UIManager.Instance().deletePanel.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+
+                                UIManager.Instance().mainPanel.SetActive(false);
                                 UIManager.Instance().pricePanel.SetActive(true);
                                 UIManager.Instance().GoldTextChnage();
                                 UIManager.Instance().DiaTextChange();

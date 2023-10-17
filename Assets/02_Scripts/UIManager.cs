@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionPanel;
     public Sprite[] optionSprits;
+    public Image optionButton;
     public Image SoundImage;
     public Image StopImage;
     public Image doubleSpeedImage;
@@ -186,13 +187,24 @@ public class UIManager : MonoBehaviour
 
     public void SellPanelOpen()
     {
+        sellPanel.SetActive(true);
+        sellPanel.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+
         GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
 
         if( _buildings.Length > 0 )
         {
             for (int i = 0; i < _buildings.Length; i++)
             {
-                _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+                if(_buildings[i].transform.GetComponent<BuildingController>().buildingType == BuildingController.BUILDINGTYPE.TOWER)
+                {
+                    _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+                    _buildings[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
+                }
             }
         }
 
@@ -205,6 +217,8 @@ public class UIManager : MonoBehaviour
 
     public void SellPanelClose()
     {
+        sellPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => sellPanel.SetActive(false));
+
         GameObject[] _buildings = GameObject.FindGameObjectsWithTag("Building");
 
         if( _buildings.Length > 0)
@@ -218,19 +232,15 @@ public class UIManager : MonoBehaviour
 
     public void OptionButton()
     {
-        if (optionPanel.activeSelf)
+        if (optionPanel.GetComponent<RectTransform>().anchoredPosition.y < 450.0f)
         {
-            optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[0];
-            optionPanel.SetActive(false);
-
-            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(350f, 0.6f);
+            optionButton.sprite = optionSprits[0];
+            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(455f, 0.6f);
         }
         else
         {
-            optionPanel.transform.parent.gameObject.GetComponent<Image>().sprite = optionSprits[1];
-            optionPanel.SetActive(true);
-
-            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(-225f, 0.6f);
+            optionButton.sprite = optionSprits[1];
+            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.6f);
         }
     }
 
@@ -266,12 +276,12 @@ public class UIManager : MonoBehaviour
 
     public void DoubleSpeedButton()
     {
-        if(Time.timeScale != 0 && Time.timeScale != 2 && GameManager.Instance().isNight)
+        if(Time.timeScale != 0 && Time.timeScale != 2)
         {
             Time.timeScale = 2;
             doubleSpeedImage.sprite = optionSprits[7];
         }
-        else if(Time.timeScale != 0 && Time.timeScale != 1 && GameManager.Instance().isNight)
+        else if(Time.timeScale != 0 && Time.timeScale != 1)
         {
             Time.timeScale = 1;
             doubleSpeedImage.sprite = optionSprits[6];
@@ -296,6 +306,8 @@ public class UIManager : MonoBehaviour
     public void Victory()
     {
         victoryPanel.SetActive(true);
+        //victoryPanel.transform.DOScale()
+
         killCountText.text = "KILL MONSTER" + "\n" + String.Format("<color=red>{0:00}</color>", GameManager.Instance().killCount);
         getGoldText.text = "GOLD" + "\n" + String.Format("<color=orange>{0:00}</color>", GameManager.Instance().getGold);
         nightText.text = "c";
@@ -306,6 +318,9 @@ public class UIManager : MonoBehaviour
         nightTimeSlider.value = 0;
         GameManager.Instance().killCount = 0;
         GameManager.Instance().getGold = 0;
+
+        Time.timeScale = 1;
+        doubleSpeedImage.sprite = optionSprits[6];
     }
 
     public void GameOver()

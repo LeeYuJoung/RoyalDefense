@@ -21,10 +21,14 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navAgent;
     private Animator animator;
     private Collider _collider;
+
+    public GameObject damageCanvas;
     public Slider hpSlider;
 
     public Transform basicTarget;
     public Transform target;
+
+    public Vector3 canvasPos;
 
     public int maxHealth;
     public int health;
@@ -54,6 +58,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        damageCanvas.transform.LookAt(Camera.main.transform);
         TargetCheck();
         StateCheck();
     }
@@ -155,6 +160,10 @@ public class EnemyController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
+        GameObject _canvas = Instantiate(damageCanvas);
+        _canvas.transform.localPosition = transform.position + canvasPos;
+        _canvas.GetComponent<DamageCanvas>().damage = _power;
+
         health -= _power;
         hpSlider.value = (float)health / maxHealth;
 

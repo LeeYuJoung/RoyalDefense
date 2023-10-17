@@ -232,6 +232,7 @@ public class PawnController : MonoBehaviour
         power += 5;
         attackCoolTime -= 0.5f;
         moveSpeed -= 0.2f;
+        attackDistance += 3.0f;
 
         health = maxHealth;
         upgradePrice += 2;
