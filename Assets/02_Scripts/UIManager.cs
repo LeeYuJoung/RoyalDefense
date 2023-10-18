@@ -37,8 +37,12 @@ public class UIManager : MonoBehaviour
     public GameObject deletePossiblePanel;
     public GameObject gameoverPanel;
     public GameObject pricePanel;
+
     public GameObject descriptionPanel;
     public GameObject descriptionBack;
+    public CanvasGroup[] descriptions;
+    public GameObject[] descriptionsButtons;
+    public int descriptionIdx = 0;
 
     public GameObject optionPanel;
     public GameObject optionMask;
@@ -62,7 +66,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] createPossiblePanels;
     public int[] createPrices;
 
-    public GameObject[] descriptionImages;
+    public CanvasGroup[] shopDescriptions;
 
     public GameObject currentCreateObject;
     public Vector3 objectsPos;
@@ -129,12 +133,12 @@ public class UIManager : MonoBehaviour
 
     public void DescriptionOpen(int idx)
     {
-        descriptionImages[idx].SetActive(true);
+        StartCoroutine(Fade(true, shopDescriptions[idx]));
     }
 
     public void DescriptionClose(int idx)
     {
-        descriptionImages[idx].SetActive(false);
+        StartCoroutine(Fade(false, shopDescriptions[idx]));
     }
 
     public void CreateTrueButton()
@@ -155,12 +159,18 @@ public class UIManager : MonoBehaviour
 
     public void CreateObjectLeftTurn()
     {
+        if (currentCreateObject == null)
+            return;
+
         Vector3 dir = currentCreateObject.transform.localRotation.eulerAngles + new Vector3(0, 90.0f, 0);
         currentCreateObject.transform.localRotation = Quaternion.Euler(dir);
     }
 
     public void CreateObjectRightTurn()
     {
+        if (currentCreateObject == null)
+            return;
+
         Vector3 dir = currentCreateObject.transform.localRotation.eulerAngles + new Vector3(0, -90.0f, 0);
         currentCreateObject.transform.localRotation = Quaternion.Euler(dir);
     }
@@ -311,7 +321,7 @@ public class UIManager : MonoBehaviour
 
     public void Victory()
     {
-        StartCoroutine(Fade(true));
+        StartCoroutine(Fade(true, victoryCanvas));
 
         killCountText.text = "KILL MONSTER" + "\n" + String.Format("<color=red>{0:00}</color>", GameManager.Instance().killCount);
         getGoldText.text = "GOLD" + "\n" + String.Format("<color=orange>{0:00}</color>", GameManager.Instance().getGold);
@@ -320,7 +330,7 @@ public class UIManager : MonoBehaviour
 
     public void IsMorning()
     {
-        StartCoroutine(Fade(false));
+        StartCoroutine(Fade(false, victoryCanvas));
 
         GameManager.Instance().killCount = 0;
         GameManager.Instance().getGold = 0;
@@ -347,26 +357,24 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public IEnumerator Fade(bool isFadeIn)
-    {
-        if (isFadeIn)
-        {
-            victoryCanvas.alpha = 0;
-            victoryCanvas.gameObject.SetActive(true);
-            Tween tween = victoryCanvas.DOFade(1f, 0.65f);
-            yield return tween.WaitForCompletion();
-        }
-        else
-        {
-            victoryCanvas.alpha = 1;
-            Tween tween = victoryCanvas.DOFade(0f, 0.65f);
-            yield return tween.WaitForCompletion();
-            victoryCanvas.gameObject.SetActive(false);
-        }
-    }
-
     public void DescriptionPanelOpen()
     {
+        for(int i = 0; i < descriptions.Length; i++)
+        {
+            if(i == 0)
+            {
+                descriptions[i].gameObject.SetActive(true);
+                descriptions[i].alpha = 1;
+            }
+            else
+            {
+                descriptions[i].gameObject.SetActive(false);
+            }
+        }
+        descriptionsButtons[0].SetActive(false);
+        descriptionsButtons[1].SetActive(true);
+        descriptionIdx = 0;
+
         descriptionBack.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.8f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
     }
 
@@ -376,11 +384,72 @@ public class UIManager : MonoBehaviour
         StartCoroutine(MainPanelOpen());
     }
 
+    public void DescriptionPanelContoll(bool isRight)
+    {
+        if (isRight)
+        {
+            StartCoroutine(Fade(false, descriptions[descriptionIdx]));
+            descriptionIdx++;
+            StartCoroutine(Fade(true, descriptions[descriptionIdx]));
+        }
+        else
+        {
+            StartCoroutine(Fade(false, descriptions[descriptionIdx]));
+            descriptionIdx--;
+            StartCoroutine(Fade(true, descriptions[descriptionIdx]));
+        }
+
+        if (descriptionIdx == 4)
+        {
+            descriptionsButtons[1].SetActive(false);
+        }
+        else
+        {
+            descriptionsButtons[1].SetActive(true);
+        }
+        if (descriptionIdx == 0)
+        {
+            descriptionsButtons[0].SetActive(false);
+        }
+        else
+        {
+            descriptionsButtons[0].SetActive(true);
+        }
+    }
+
     IEnumerator MainPanelOpen()
     {
         optionButton.sprite = optionSprits[0];
         optionPanel.GetComponent<RectTransform>().DOAnchorPosY(555f, 0.6f).OnComplete(() => optionMask.SetActive(false));
         yield return new WaitForSeconds(0.5f);
         mainPanel.SetActive(true);
+    }
+
+    public IEnumerator Fade(bool isFadeIn, CanvasGroup _canvas)
+    {
+        if (isFadeIn)
+        {
+            _canvas.alpha = 0;
+            _canvas.gameObject.SetActive(true);
+            Tween tween = _canvas.DOFade(1f, 0.65f);
+            yield return tween.WaitForCompletion();
+        }
+        else
+        {
+            _canvas.alpha = 1;
+            Tween tween = _canvas.DOFade(0f, 0.65f);
+            yield return tween.WaitForCompletion();
+            _canvas.gameObject.SetActive(false);
+        }
+    }
+
+    public void ButtonTweenEnter(GameObject _object)
+    {
+        _object.transform.DOScale(new Vector3(0.85f, 0.85f, 0.85f), 0.2f);
+    }
+
+    public void ButtonTweenExit(GameObject _object)
+    {
+        _object.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f);
     }
 }
