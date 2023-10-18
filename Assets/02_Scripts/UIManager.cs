@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         DOTween.Init();
     }
 
+    public CanvasGroup victoryCanvas;
     public GameObject mainPanel;
     public GameObject shopPanel;
     public GameObject upgradePanel;
@@ -36,8 +37,11 @@ public class UIManager : MonoBehaviour
     public GameObject deletePossiblePanel;
     public GameObject gameoverPanel;
     public GameObject pricePanel;
+    public GameObject descriptionPanel;
+    public GameObject descriptionBack;
 
     public GameObject optionPanel;
+    public GameObject optionMask;
     public Sprite[] optionSprits;
     public Image optionButton;
     public Image SoundImage;
@@ -116,8 +120,9 @@ public class UIManager : MonoBehaviour
         }
 
         shopPanel.SetActive(false);
-        createPanel.SetActive(true);
         pricePanel.SetActive(false);
+        createPanel.SetActive(true);
+        createPanel.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
 
         objectsBuy = true;
     }
@@ -139,13 +144,13 @@ public class UIManager : MonoBehaviour
         else if(currentCreateObject.CompareTag("Pawn"))
             GameManager.Instance().gold -= currentCreateObject.GetComponent<PawnController>().createPrice;
 
-        createPanel.SetActive(false);
+        createPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => createPanel.SetActive(false));
     }
 
     public void CreateFalseButton()
     {       
         Destroy(currentCreateObject);
-        createPanel.SetActive(false);
+        createPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => createPanel.SetActive(false));
     }
 
     public void CreateObjectLeftTurn()
@@ -232,14 +237,15 @@ public class UIManager : MonoBehaviour
 
     public void OptionButton()
     {
-        if (optionPanel.GetComponent<RectTransform>().anchoredPosition.y < 450.0f)
+        if (optionPanel.GetComponent<RectTransform>().anchoredPosition.y < 550.0f)
         {
             optionButton.sprite = optionSprits[0];
-            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(455f, 0.6f);
+            optionPanel.GetComponent<RectTransform>().DOAnchorPosY(555f, 0.6f).OnComplete(() => optionMask.SetActive(false));
         }
         else
         {
             optionButton.sprite = optionSprits[1];
+            optionMask.SetActive(true);
             optionPanel.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.6f);
         }
     }
@@ -305,8 +311,7 @@ public class UIManager : MonoBehaviour
 
     public void Victory()
     {
-        victoryPanel.SetActive(true);
-        //victoryPanel.transform.DOScale()
+        StartCoroutine(Fade(true));
 
         killCountText.text = "KILL MONSTER" + "\n" + String.Format("<color=red>{0:00}</color>", GameManager.Instance().killCount);
         getGoldText.text = "GOLD" + "\n" + String.Format("<color=orange>{0:00}</color>", GameManager.Instance().getGold);
@@ -315,9 +320,11 @@ public class UIManager : MonoBehaviour
 
     public void IsMorning()
     {
-        nightTimeSlider.value = 0;
+        StartCoroutine(Fade(false));
+
         GameManager.Instance().killCount = 0;
         GameManager.Instance().getGold = 0;
+        nightTimeSlider.value = 0;
 
         Time.timeScale = 1;
         doubleSpeedImage.sprite = optionSprits[6];
@@ -338,5 +345,42 @@ public class UIManager : MonoBehaviour
     public void GameExitButton()
     {
         Application.Quit();
+    }
+
+    public IEnumerator Fade(bool isFadeIn)
+    {
+        if (isFadeIn)
+        {
+            victoryCanvas.alpha = 0;
+            victoryCanvas.gameObject.SetActive(true);
+            Tween tween = victoryCanvas.DOFade(1f, 0.65f);
+            yield return tween.WaitForCompletion();
+        }
+        else
+        {
+            victoryCanvas.alpha = 1;
+            Tween tween = victoryCanvas.DOFade(0f, 0.65f);
+            yield return tween.WaitForCompletion();
+            victoryCanvas.gameObject.SetActive(false);
+        }
+    }
+
+    public void DescriptionPanelOpen()
+    {
+        descriptionBack.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.8f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+    }
+
+    public void DescriptionPanelClose()
+    {
+        descriptionBack.GetComponent<RectTransform>().DOAnchorPosY(-1000.0f, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => descriptionPanel.SetActive(false));
+        StartCoroutine(MainPanelOpen());
+    }
+
+    IEnumerator MainPanelOpen()
+    {
+        optionButton.sprite = optionSprits[0];
+        optionPanel.GetComponent<RectTransform>().DOAnchorPosY(555f, 0.6f).OnComplete(() => optionMask.SetActive(false));
+        yield return new WaitForSeconds(0.5f);
+        mainPanel.SetActive(true);
     }
 }
