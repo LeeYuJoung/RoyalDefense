@@ -14,12 +14,13 @@ public class UpgradeManager : MonoBehaviour
         return _instance;
     }
 
-    public Text sellPrice;
-    public Text buildingName;
-
     public GameObject possiblePanel;
+    public CanvasGroup levelUpText;
     public Text priceText;
     public Text levelText;
+
+    public Text sellPrice;
+    public Text buildingName;
 
     public Collider objectCollider;
     public int price;
@@ -109,6 +110,7 @@ public class UpgradeManager : MonoBehaviour
             objectCollider.GetComponent<BuildingController>().LevelUP();
         }
 
+        StartCoroutine(LevelUPPanel());
         UIManager.Instance().GoldTextChnage();
         UIManager.Instance().DiaTextChange();
         objectCollider.transform.GetChild(3).localScale += new Vector3(3.0f, 0.0f, 3.0f);
@@ -182,7 +184,9 @@ public class UpgradeManager : MonoBehaviour
         {
             UIManager.Instance().GoldTextChnage();
             UIManager.Instance().DiaTextChange();
-            objectCollider.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce);
+
+            objectCollider.GetComponent<BuildingController>().Sell();
+            objectCollider.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.25f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce);
             Destroy(objectCollider.gameObject, 0.15f);
         }
     }
@@ -193,6 +197,19 @@ public class UpgradeManager : MonoBehaviour
         {
             objectCollider.transform.GetChild(2).gameObject.SetActive(false);
         }
+    }
+
+    public IEnumerator LevelUPPanel()
+    {
+        levelUpText.gameObject.SetActive(true);
+        levelUpText.alpha = 1;
+        levelUpText.transform.DOScale(new Vector3(1f, 1f, 1f), 0.65f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(2.5f);
+
+        levelUpText.alpha = 1;
+        Tween tween = levelUpText.DOFade(0f, 1f);
+        yield return tween.WaitForCompletion();
+        levelUpText.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.05f).OnComplete(() => levelUpText.gameObject.SetActive(false));
     }
 
     public void InitObject()

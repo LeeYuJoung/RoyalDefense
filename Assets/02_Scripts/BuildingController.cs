@@ -34,6 +34,11 @@ public class BuildingController : MonoBehaviour
     public GameObject target;
     public GameObject dieEffect;
 
+    public GameObject coinPrefab;
+    public Transform coinPos;
+
+    public GameObject levelupEffect;
+
     public string buildingName;
     public int level = 1;
     public int health;
@@ -93,6 +98,8 @@ public class BuildingController : MonoBehaviour
                         {
                             GameManager.Instance().diamond += diaPercent;
                         }
+
+                        Instantiate(coinPrefab, coinPos.position, coinPos.rotation);
                     }
                 }
 
@@ -197,6 +204,8 @@ public class BuildingController : MonoBehaviour
 
     public void LevelUP()
     {
+        StartCoroutine(LevelUPEffect());
+
         level += 1;
         maxHealth += 30;
         power += 5;
@@ -212,6 +221,18 @@ public class BuildingController : MonoBehaviour
         {
             bulletPrefab.GetComponent<BulletController>().power = this.power;
         }
+    }
+
+    public IEnumerator LevelUPEffect()
+    {
+        levelupEffect.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        levelupEffect.SetActive(false);
+    }
+
+    public void Sell()
+    {
+        Instantiate(coinPrefab, coinPos.position, coinPos.rotation);
     }
 
     private void OnDrawGizmos()

@@ -87,18 +87,25 @@ public class CameraController : MonoBehaviour
             yLimitUp = 70.0f;
             yLimitDown = 0.0f;
         }
-        else if (_camera.fieldOfView == 45.0f)
+        else if (_camera.fieldOfView == 50.0f)
         {
             xLimitUp = 80.0f;
             xLimitDown = 0.0f;
             yLimitUp = 80.0f;
             yLimitDown = 0.0f;
         }
-        else if (_camera.fieldOfView == 30.0f)
+        else if(_camera.fieldOfView == 40.0f)
         {
             xLimitUp = 90.0f;
             xLimitDown = 0.0f;
             yLimitUp = 90.0f;
+            yLimitDown = 0.0f;
+        }
+        else if (_camera.fieldOfView == 30.0f)
+        {
+            xLimitUp = 100.0f;
+            xLimitDown = 0.0f;
+            yLimitUp = 100.0f;
             yLimitDown = 0.0f;
         }
     }

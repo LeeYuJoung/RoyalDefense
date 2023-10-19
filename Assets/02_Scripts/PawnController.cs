@@ -28,6 +28,7 @@ public class PawnController : MonoBehaviour
 
     public GameObject attackEffect;
     public GameObject attackRangeEffect;
+    public GameObject levelUpEffect;
 
     public int level = 1;
     public int health;
@@ -227,6 +228,8 @@ public class PawnController : MonoBehaviour
 
     public void LevelUP()
     {
+        StartCoroutine(LevelUPEffect());
+
         level += 1;
         maxHealth += 50;
         power += 5;
@@ -238,6 +241,13 @@ public class PawnController : MonoBehaviour
         upgradePrice += 2;
 
         hpSlider.value = (float)health / maxHealth;
+    }
+
+    public IEnumerator LevelUPEffect()
+    {
+        levelUpEffect.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        levelUpEffect.SetActive(false);
     }
 
     private void OnDrawGizmos()

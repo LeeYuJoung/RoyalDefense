@@ -380,7 +380,7 @@ public class UIManager : MonoBehaviour
         descriptionsButtons[1].SetActive(true);
         descriptionIdx = 0;
 
-        descriptionBack.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.8f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+        descriptionBack.GetComponent<RectTransform>().DOAnchorPosY(50.0f, 0.8f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
     }
 
     public void DescriptionPanelClose()

@@ -123,7 +123,7 @@ public class MouseClickController : MonoBehaviour
         BuildingController _building = _object.GetComponent<BuildingController>();
         if(_building != null && _building.buildingType == BuildingController.BUILDINGTYPE.GOLDMINE)
         {
-            _object.transform.DOScale(new Vector3(0.65f, 0.65f, 0.65f), 0.15f);
+            _object.transform.DOScale(new Vector3(0.6f, 0.6f, 0.6f), 0.15f);
             yield return new WaitForSeconds(0.15f);
             _object.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.15f);
         }
