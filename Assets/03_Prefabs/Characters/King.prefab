@@ -84,6 +84,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   currentTime: 0
+  hitTime: 0
   attackCoolTime: 1.2
   attackTime: 0.667
   power: 10

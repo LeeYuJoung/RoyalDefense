@@ -48,6 +48,8 @@ public class MouseClickController : MonoBehaviour
                             else if(!GameManager.Instance().isNight && UIManager.Instance().objectsBuy && !UIManager.Instance().shopPanel.activeSelf)
                             {
                                 GameObject _object = Instantiate(objectsPrefabs[UIManager.Instance().objectsNum]);
+                                _object.transform.DOScale(UIManager.Instance().objectSize, 0.25f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
+
                                 _object.transform.position = hit.transform.position + UIManager.Instance().objectsPos;
                                 UIManager.Instance().currentCreateObject = _object.gameObject;
                                 UIManager.Instance().objectsBuy = false;
@@ -57,12 +59,14 @@ public class MouseClickController : MonoBehaviour
                         case "Pawn":
                             if (GameManager.Instance().isNight)
                             {
+                                StartCoroutine(ObjectClick(hit.transform.gameObject));
                                 _object = hit.collider.gameObject;
                                 Time.timeScale = 0.2f;
                             }
 
                             if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
                             {
+                                StartCoroutine(ObjectClick(hit.transform.gameObject));
                                 UpgradeManager.Instance().UpgradeClick(hit.collider);
                             }
 
@@ -71,11 +75,13 @@ public class MouseClickController : MonoBehaviour
                             if(!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
                             {
                                 UpgradeManager.Instance().UpgradeClick(hit.collider);
+                                StartCoroutine(ObjectClick(hit.transform.gameObject));
                             }
 
                             if (UIManager.Instance().sellPanel.activeSelf)
                             {
                                 UpgradeManager.Instance().BuildingSelect(hit.collider);
+                                StartCoroutine(ObjectClick(hit.transform.gameObject));
                             }
 
                             break;
@@ -99,6 +105,7 @@ public class MouseClickController : MonoBehaviour
                                     UIManager.Instance().deletePossiblePanel.SetActive(true);
                                 }
 
+                                StartCoroutine(ObjectClick(hit.transform.gameObject));
                                 UpgradeManager.Instance().ObstacleCheck(hit.collider);
                             }
 
@@ -108,6 +115,23 @@ public class MouseClickController : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public IEnumerator ObjectClick(GameObject _object)
+    {
+        BuildingController _building = _object.GetComponent<BuildingController>();
+        if(_building != null && _building.buildingType == BuildingController.BUILDINGTYPE.GOLDMINE)
+        {
+            _object.transform.DOScale(new Vector3(0.65f, 0.65f, 0.65f), 0.15f);
+            yield return new WaitForSeconds(0.15f);
+            _object.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.15f);
+        }
+        else
+        {
+            _object.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.15f);
+            yield return new WaitForSeconds(0.15f);
+            _object.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.15f);
         }
     }
 }

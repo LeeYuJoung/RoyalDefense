@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using DG.Tweening;
+using System.Xml.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -70,6 +71,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject currentCreateObject;
     public Vector3 objectsPos;
+    public Vector3 objectSize;
     public int objectsNum;
     public bool objectsBuy = false;
 
@@ -86,41 +88,49 @@ public class UIManager : MonoBehaviour
         {
             objectsNum = 0;
             objectsPos = new Vector3(0, 1.0f, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("Baricade"))
         {
             objectsNum = 1;
             objectsPos = new Vector3(0, 1.5f, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("Balista"))
         {
             objectsNum = 2;
             objectsPos = new Vector3(0, 0, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("Tower"))
         {
             objectsNum = 3;
             objectsPos = new Vector3(0, 0, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("GoldMine"))
         {
             objectsNum = 4;
             objectsPos = new Vector3(0, 1.8f, 0);
+            objectSize = new Vector3(0.5f, 0.5f, 0.5f);
         }
         else if (buildingType.Equals("Spearman"))
         {
             objectsNum = 5;
             objectsPos = new Vector3(0, 0.3f, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("ShieldBearer"))
         {
             objectsNum = 6;
-            objectsPos = new Vector3(0, 0.0f, 0); 
+            objectsPos = new Vector3(0, 0.0f, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
         else if (buildingType.Equals("Wizard"))
         {
             objectsNum = 7;
             objectsPos = new Vector3(0, 0.3f, 0);
+            objectSize = new Vector3(1f, 1f, 1f);
         }
 
         shopPanel.SetActive(false);
@@ -152,8 +162,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void CreateFalseButton()
-    {       
-        Destroy(currentCreateObject);
+    {
+        if(currentCreateObject != null)
+        {
+            currentCreateObject.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce).OnComplete(() => Destroy(currentCreateObject));
+        }
         createPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => createPanel.SetActive(false));
     }
 
@@ -211,15 +224,7 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < _buildings.Length; i++)
             {
-                if(_buildings[i].transform.GetComponent<BuildingController>().buildingType == BuildingController.BUILDINGTYPE.TOWER)
-                {
-                    _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
-                    _buildings[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-                }
-                else
-                {
-                    _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
-                }
+                _buildings[i].transform.GetChild(0).gameObject.SetActive(true);
             }
         }
 

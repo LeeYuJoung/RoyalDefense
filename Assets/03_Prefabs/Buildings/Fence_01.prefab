@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 8465189857056407840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.18914, y: 1, z: 20.353786}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 90438978326583251}
@@ -596,7 +596,8 @@ MonoBehaviour:
   buildingState: 0
   attackController: {fileID: 0}
   bulletPrefab: {fileID: 0}
-  towerHead: {fileID: 0}
+  towerHead:
+  - {fileID: 0}
   target: {fileID: 0}
   dieEffect: {fileID: 3807003869739248234}
   buildingName: WALL

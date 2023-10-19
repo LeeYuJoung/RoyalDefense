@@ -146,7 +146,7 @@ public class UpgradeManager : MonoBehaviour
         {
             UIManager.Instance().GoldTextChnage();
             UIManager.Instance().DiaTextChange();
-            Destroy(objectCollider.gameObject);
+            objectCollider.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce).OnComplete(() => Destroy(objectCollider.gameObject));
         }
     }
 
@@ -182,7 +182,8 @@ public class UpgradeManager : MonoBehaviour
         {
             UIManager.Instance().GoldTextChnage();
             UIManager.Instance().DiaTextChange();
-            Destroy(objectCollider.gameObject);
+            objectCollider.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce);
+            Destroy(objectCollider.gameObject, 0.15f);
         }
     }
 
