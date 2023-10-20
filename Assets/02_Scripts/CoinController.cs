@@ -14,6 +14,6 @@ public class CoinController : MonoBehaviour
 
     void Update()
     {
-        transform.DOMoveY(9.0f, 2.0f).OnComplete(() => Destroy(gameObject));
+        transform.DOMoveY(9.0f, 1.25f).OnComplete(() => Destroy(gameObject));
     }
 }

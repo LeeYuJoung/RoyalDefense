@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawnState: 0
+  pawnName: Knight
   hpSlider: {fileID: 6624718859679257174}
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}

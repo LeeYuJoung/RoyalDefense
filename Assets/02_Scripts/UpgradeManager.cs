@@ -110,7 +110,6 @@ public class UpgradeManager : MonoBehaviour
             objectCollider.GetComponent<BuildingController>().LevelUP();
         }
 
-        StartCoroutine(LevelUPPanel());
         UIManager.Instance().GoldTextChnage();
         UIManager.Instance().DiaTextChange();
         objectCollider.transform.GetChild(3).localScale += new Vector3(3.0f, 0.0f, 3.0f);

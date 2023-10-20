@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawnState: 0
+  pawnName: Wizard
   hpSlider: {fileID: 1696707047922518828}
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}

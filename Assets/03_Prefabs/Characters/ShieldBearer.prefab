@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawnState: 0
+  pawnName: ShieldBearer
   hpSlider: {fileID: 6557524298111497823}
   moveTarget: {fileID: 0}
   attackTarget: {fileID: 0}
@@ -386,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7322193501933809384
 Transform:
   m_ObjectHideFlags: 0

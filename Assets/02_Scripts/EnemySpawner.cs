@@ -41,8 +41,9 @@ public class EnemySpawner : MonoBehaviour
 
             StartCoroutine(SpawnEffect(posIdx));
             yield return new WaitForSeconds(0.5f);
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().enemySpawnSound);
 
-            if(enemyIdx > 20)
+            if (enemyIdx > 20)
             {
                 GameObject _enemy = Instantiate(enemyPrefabs[0], spawnPos[posIdx].position, spawnPos[posIdx].rotation);
                 _enemy.GetComponent<EnemyController>().maxHealth = enemyHealths[0];

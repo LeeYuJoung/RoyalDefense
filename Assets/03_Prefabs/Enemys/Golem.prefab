@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
+  enemyName: Golem
   damageCanvas: {fileID: 360023508844637446, guid: b7793959f517db34aa4df32599a9682d, type: 3}
   hpSlider: {fileID: 7524892032828036613}
   basicTarget: {fileID: 8811223557512841535, guid: d548e85aa156b4e42b3f0ca2cefcb793, type: 3}

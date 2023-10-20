@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     }
     public LIVINGENTITYSTATE enemyState;
 
+    public string enemyName;
     private AttackController attackController;
     private NavMeshAgent navAgent;
     private Animator animator;
@@ -119,16 +120,21 @@ public class EnemyController : MonoBehaviour
 
                 if (currentTime > attackCoolTime)
                 {
-                    currentTime = 0;
-
-                    if(attackController.attackType == AttackController.ATTACKTYPE.SINGLE)
+                    if (enemyName.Equals("Cactus"))
                     {
-                        attackController.SingleAttack();
+                        AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyAttackSound[0]);
+                    }
+                    else if (enemyName.Equals("Golem"))
+                    {
+                        AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyAttackSound[1]);
                     }
                     else
                     {
-                        attackController.RangeAttack();
+                        AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyAttackSound[2]);
                     }
+
+                    currentTime = 0;
+                    attackController.SingleAttack();
                 }
 
                 distance = Vector3.Distance(transform.position, target.position);
@@ -159,7 +165,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void OnDamage(int _power)
-    {
+    { 
         GameObject _canvas = Instantiate(damageCanvas);
         _canvas.transform.localPosition = transform.position + canvasPos;
         _canvas.GetComponent<DamageCanvas>().damage = _power;
@@ -169,6 +175,7 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyDieSound);
             enemyState = LIVINGENTITYSTATE.DIE;
             GameManager.Instance().gold += getGold;
             GameManager.Instance().getGold += getGold;

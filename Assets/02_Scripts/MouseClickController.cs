@@ -29,6 +29,8 @@ public class MouseClickController : MonoBehaviour
                     switch(hit.collider.gameObject.tag)
                     {
                         case "Tile":
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().clickSound);
+
                             if (GameManager.Instance().isNight && _object != null)
                             {
                                 _object.GetComponent<PawnController>().moveTarget = hit.transform;
@@ -57,6 +59,8 @@ public class MouseClickController : MonoBehaviour
 
                             break;
                         case "Pawn":
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().clickSound);
+
                             if (GameManager.Instance().isNight)
                             {
                                 StartCoroutine(ObjectClick(hit.transform.gameObject));
@@ -72,7 +76,9 @@ public class MouseClickController : MonoBehaviour
 
                             break;
                         case "Building":
-                            if(!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().clickSound);
+
+                            if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf && !UIManager.Instance().deletePanel.activeSelf)
                             {
                                 UpgradeManager.Instance().UpgradeClick(hit.collider);
                                 StartCoroutine(ObjectClick(hit.transform.gameObject));
@@ -86,6 +92,8 @@ public class MouseClickController : MonoBehaviour
 
                             break;
                         case "Obstacle":
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().clickSound);
+
                             if (!GameManager.Instance().isNight && !UIManager.Instance().victoryPanel.activeSelf && !UIManager.Instance().createPanel.activeSelf && !UIManager.Instance().upgradePanel.activeSelf && !UIManager.Instance().shopPanel.activeSelf && !UIManager.Instance().sellPanel.activeSelf)
                             {
                                 UIManager.Instance().deletePanel.SetActive(true);

@@ -17,6 +17,7 @@ public class PawnController : MonoBehaviour
     }
     public LIVINGENTITYSTATE pawnState;
 
+    public string pawnName;
     private AttackController attackController;
     private NavMeshAgent navAgent;
     private Animator animator;
@@ -117,11 +118,22 @@ public class PawnController : MonoBehaviour
 
                     if (attackController.attackType == AttackController.ATTACKTYPE.SINGLE)
                     {
+                        if (pawnName.Equals("Knight"))
+                        {
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().pawnAttackSound[0]);
+                        }
+                        else
+                        {
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().pawnAttackSound[1]);
+                        }
+
                         attackController.SingleAttack();
                         pawnState = LIVINGENTITYSTATE.IDLE;
                     }
                     else
                     {
+                        AudioManager.Instance().SoundPlay(AudioManager.Instance().pawnAttackSound[2]);
+
                         pawnState = LIVINGENTITYSTATE.IDLE;
                         StartCoroutine(WizardAttack());
                         attackController.RangeAttack();
@@ -197,6 +209,7 @@ public class PawnController : MonoBehaviour
 
         if (health <= 0)
         {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().pawnDieSound);
             pawnState = LIVINGENTITYSTATE.DIE;
         }
 
@@ -246,7 +259,7 @@ public class PawnController : MonoBehaviour
     public IEnumerator LevelUPEffect()
     {
         levelUpEffect.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
         levelUpEffect.SetActive(false);
     }
 

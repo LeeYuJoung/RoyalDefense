@@ -267,11 +267,11 @@ public class UIManager : MonoBehaviour
 
     public void SoundButton()
     {
-        AudioSource _audio = GameObject.Find("Sound").GetComponent<AudioSource>();
+        AudioSource _audio = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 
         if(_audio.volume == 0)
         {
-            _audio.volume = 1;
+            _audio.volume = 0.2f;
             SoundImage.sprite = optionSprits[2];
         }
         else

@@ -226,7 +226,7 @@ public class BuildingController : MonoBehaviour
     public IEnumerator LevelUPEffect()
     {
         levelupEffect.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
         levelupEffect.SetActive(false);
     }
 
