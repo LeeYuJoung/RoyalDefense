@@ -345,6 +345,12 @@ public class UIManager : MonoBehaviour
         doubleSpeedImage.sprite = optionSprits[6];
     }
 
+    public  void StartButton()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+
     public void GameOver()
     {
         Time.timeScale = 0;
@@ -353,7 +359,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         Time.timeScale = 1;
     }
 
