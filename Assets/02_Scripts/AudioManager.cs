@@ -21,6 +21,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] enemyAttackSound;
     public AudioClip enemyDieSound;
     public AudioClip enemySpawnSound;
+    public AudioClip victorySound;
+    public AudioClip gameOverSound;
+    public AudioClip coinSpawnSound;
 
     void Start()
     {

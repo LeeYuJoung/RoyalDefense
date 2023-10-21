@@ -31,6 +31,8 @@ public class PawnController : MonoBehaviour
     public GameObject attackRangeEffect;
     public GameObject levelUpEffect;
 
+    public GameObject clickObject;
+
     public int level = 1;
     public int health;
     public int maxHealth;
@@ -81,6 +83,7 @@ public class PawnController : MonoBehaviour
                 attackRangeEffect.SetActive(false);
             }
             pawnState = LIVINGENTITYSTATE.IDLE;
+            Destroy(clickObject);
         }
 
         switch (pawnState)
@@ -103,6 +106,7 @@ public class PawnController : MonoBehaviour
                 if (distance <= 1.0f)
                 {
                     pawnState = LIVINGENTITYSTATE.IDLE;
+                    Destroy(clickObject);
                 }
                 else
                 {
@@ -210,6 +214,7 @@ public class PawnController : MonoBehaviour
         if (health <= 0)
         {
             AudioManager.Instance().SoundPlay(AudioManager.Instance().pawnDieSound);
+            Destroy(clickObject);
             pawnState = LIVINGENTITYSTATE.DIE;
         }
 

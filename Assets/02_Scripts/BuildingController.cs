@@ -100,6 +100,7 @@ public class BuildingController : MonoBehaviour
                         }
 
                         Instantiate(coinPrefab, coinPos.position, coinPos.rotation);
+                        AudioManager.Instance().SoundPlay(AudioManager.Instance().coinSpawnSound);
                     }
                 }
 

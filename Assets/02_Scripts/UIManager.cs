@@ -327,6 +327,7 @@ public class UIManager : MonoBehaviour
     public void Victory()
     {
         StartCoroutine(Fade(true, victoryCanvas));
+        AudioManager.Instance().SoundPlay(AudioManager.Instance().victorySound);
 
         killCountText.text = "KILL MONSTER" + "\n" + String.Format("<color=red>{0:00}</color>", GameManager.Instance().killCount);
         getGoldText.text = "GOLD" + "\n" + String.Format("<color=orange>{0:00}</color>", GameManager.Instance().getGold);
@@ -355,6 +356,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gameoverPanel.SetActive(true);
+        AudioManager.Instance().SoundPlay(AudioManager.Instance().gameOverSound);
     }
 
     public void RestartButton()

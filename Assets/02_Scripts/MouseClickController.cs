@@ -8,6 +8,7 @@ public class MouseClickController : MonoBehaviour
 {
     public GameObject[] objectsPrefabs;
     public GameObject _object;
+    public GameObject clickPrefab;
 
     public RaycastHit hit;
 
@@ -35,7 +36,7 @@ public class MouseClickController : MonoBehaviour
                             {
                                 _object.GetComponent<PawnController>().moveTarget = hit.transform;
                                 _object.GetComponent<PawnController>().pawnState = PawnController.LIVINGENTITYSTATE.WALK;
-
+                                _object.GetComponent<PawnController>().clickObject = Instantiate(clickPrefab, hit.transform.position, hit.transform.rotation);
                                 _object = null;
 
                                 if(UIManager.Instance().doubleSpeedImage.sprite == UIManager.Instance().optionSprits[6])
@@ -65,6 +66,7 @@ public class MouseClickController : MonoBehaviour
                             {
                                 StartCoroutine(ObjectClick(hit.transform.gameObject));
                                 _object = hit.collider.gameObject;
+                                Destroy(_object.GetComponent<PawnController>().clickObject);
                                 Time.timeScale = 0.2f;
                             }
 
