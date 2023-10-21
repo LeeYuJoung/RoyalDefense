@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip clickSound;
     public AudioClip towerAttackSound;
+    public AudioClip towerExplotionSound;
     public AudioClip ballistaAttackSound;
     public AudioClip[] pawnAttackSound;
     public AudioClip pawnDieSound;

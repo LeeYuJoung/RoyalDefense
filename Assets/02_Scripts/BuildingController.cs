@@ -122,6 +122,7 @@ public class BuildingController : MonoBehaviour
 
                         if (currentTme > attackCoolTime)
                         {
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().ballistaAttackSound);
                             currentTme = 0;
                             Shot();
                         }
@@ -135,6 +136,7 @@ public class BuildingController : MonoBehaviour
 
                         if (currentTme > attackCoolTime)
                         {
+                            AudioManager.Instance().SoundPlay(AudioManager.Instance().towerAttackSound);
                             currentTme = 0;
                             Shot();
                         }

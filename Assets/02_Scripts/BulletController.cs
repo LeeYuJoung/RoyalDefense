@@ -63,6 +63,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        AudioManager.Instance().SoundPlay(AudioManager.Instance().towerExplotionSound);
         Attack(other);
 
         explosionEffect.SetActive(true);

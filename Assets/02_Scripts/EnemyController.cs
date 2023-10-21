@@ -124,7 +124,7 @@ public class EnemyController : MonoBehaviour
                     {
                         AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyAttackSound[0]);
                     }
-                    else if (enemyName.Equals("Golem"))
+                    else if (enemyName.Equals("Ork"))
                     {
                         AudioManager.Instance().SoundPlay(AudioManager.Instance().enemyAttackSound[1]);
                     }
