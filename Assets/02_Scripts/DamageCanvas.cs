@@ -8,7 +8,7 @@ public class DamageCanvas : MonoBehaviour
 {
     public Text damageText;
     public int damage;
-    public float destroyTime = 2.0f;
+    public float destroyTime = 1.0f;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class DamageCanvas : MonoBehaviour
 
     void Update()
     {
-        damageText.text = string.Format("- {0}", damage);
+        damageText.text = string.Format("{0}", damage);
         transform.Translate(Vector3.up * 1.5f * Time.deltaTime);
         damageText.fontSize -= 2;
 

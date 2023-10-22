@@ -144,6 +144,8 @@ public class BuildingController : MonoBehaviour
                     }
                     else
                     {
+                        currentTme += Time.deltaTime;
+
                         if (currentTme > attackCoolTime)
                         {
                             currentTme = 0;
