@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource _audio;
 
     public AudioClip clickSound;
+    public AudioClip baricadeExplotionSound;
     public AudioClip towerAttackSound;
     public AudioClip towerExplotionSound;
     public AudioClip ballistaAttackSound;
@@ -24,6 +25,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip victorySound;
     public AudioClip gameOverSound;
     public AudioClip coinSpawnSound;
+
+    public AudioClip sellFailSound;
+    public AudioClip createSound;
 
     void Start()
     {

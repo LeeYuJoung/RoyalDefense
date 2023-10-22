@@ -50,12 +50,13 @@ public class MouseClickController : MonoBehaviour
                             }
                             else if(!GameManager.Instance().isNight && UIManager.Instance().objectsBuy && !UIManager.Instance().shopPanel.activeSelf)
                             {
-                                GameObject _object = Instantiate(objectsPrefabs[UIManager.Instance().objectsNum]);
+                                _object = Instantiate(objectsPrefabs[UIManager.Instance().objectsNum]);
                                 _object.transform.DOScale(UIManager.Instance().objectSize, 0.25f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
 
                                 _object.transform.position = hit.transform.position + UIManager.Instance().objectsPos;
                                 UIManager.Instance().currentCreateObject = _object.gameObject;
                                 UIManager.Instance().objectsBuy = false;
+                                _object = null;
                             }
 
                             break;

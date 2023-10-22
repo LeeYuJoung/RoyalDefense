@@ -153,12 +153,21 @@ public class UIManager : MonoBehaviour
 
     public void CreateTrueButton()
     {
+        if (currentCreateObject == null)
+        {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().sellFailSound);
+            return;
+        }
+
         if (currentCreateObject.CompareTag("Building"))
             GameManager.Instance().gold -= currentCreateObject.GetComponent<BuildingController>().createPrice;
         else if(currentCreateObject.CompareTag("Pawn"))
             GameManager.Instance().gold -= currentCreateObject.GetComponent<PawnController>().createPrice;
 
         createPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => createPanel.SetActive(false));
+        mainPanel.SetActive(true);
+        AudioManager.Instance().SoundPlay(AudioManager.Instance().createSound);
+        currentCreateObject = null;
     }
 
     public void CreateFalseButton()
@@ -167,7 +176,10 @@ public class UIManager : MonoBehaviour
         {
             currentCreateObject.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce).OnComplete(() => Destroy(currentCreateObject));
         }
+
         createPanel.transform.DOScale(new Vector3(0.05f, 0.05f, 0.05f), 0.15f).SetEase(Ease.InOutExpo).OnComplete(() => createPanel.SetActive(false));
+        mainPanel.SetActive(true);
+        objectsBuy = false;
     }
 
     public void CreateObjectLeftTurn()
@@ -267,16 +279,19 @@ public class UIManager : MonoBehaviour
 
     public void SoundButton()
     {
-        AudioSource _audio = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
+        AudioSource _mainAudio = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
+        AudioSource _audio = GameObject.Find("AudioManager").GetComponent<AudioSource>();
 
-        if(_audio.volume == 0)
+        if (_mainAudio.volume == 0)
         {
-            _audio.volume = 0.2f;
+            _mainAudio.volume = 0.2f;
+            _audio.volume = 1f;
             SoundImage.sprite = optionSprits[2];
         }
         else
         {
-            _audio.volume = 0;
+            _mainAudio.volume = 0;
+            _audio.volume = 0f;
             SoundImage.sprite = optionSprits[3];
         }
     }
@@ -372,6 +387,9 @@ public class UIManager : MonoBehaviour
 
     public void DescriptionPanelOpen()
     {
+        mainPanel.SetActive(false);
+        descriptionPanel.SetActive(true);
+
         for(int i = 0; i < descriptions.Length; i++)
         {
             if(i == 0)

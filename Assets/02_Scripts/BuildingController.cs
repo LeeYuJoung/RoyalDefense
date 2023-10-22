@@ -175,6 +175,7 @@ public class BuildingController : MonoBehaviour
 
         if (health <= 0)
         {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().baricadeExplotionSound);
             isDead = true;
             dieEffect.SetActive(true);
             Destroy(gameObject, 0.5f);

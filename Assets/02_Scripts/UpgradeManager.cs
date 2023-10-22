@@ -181,12 +181,17 @@ public class UpgradeManager : MonoBehaviour
 
         if(objectCollider != null)
         {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().coinSpawnSound);
             UIManager.Instance().GoldTextChnage();
             UIManager.Instance().DiaTextChange();
 
             objectCollider.GetComponent<BuildingController>().Sell();
             objectCollider.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 0.25f).SetEase(Ease.InOutExpo).SetEase(Ease.OutBounce);
             Destroy(objectCollider.gameObject, 0.15f);
+        }
+        else
+        {
+            AudioManager.Instance().SoundPlay(AudioManager.Instance().sellFailSound);
         }
     }
 

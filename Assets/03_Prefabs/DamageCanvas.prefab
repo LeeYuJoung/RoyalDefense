@@ -196,4 +196,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageText: {fileID: 8708272419277420289}
   damage: 0
-  destroyTime: 2.5
+  destroyTime: 1
