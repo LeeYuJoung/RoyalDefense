@@ -150,9 +150,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 34ca3d1059c6ff14ab1056aae8170a4a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 96ef1421ced0ea549925711420fd8176, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1075,6 +1075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audio: {fileID: 0}
   clickSound: {fileID: 0}
+  baricadeExplotionSound: {fileID: 0}
   towerAttackSound: {fileID: 0}
   towerExplotionSound: {fileID: 0}
   ballistaAttackSound: {fileID: 0}
@@ -1085,6 +1086,11 @@ MonoBehaviour:
   - {fileID: 0}
   enemyDieSound: {fileID: 0}
   enemySpawnSound: {fileID: 0}
+  victorySound: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  coinSpawnSound: {fileID: 0}
+  sellFailSound: {fileID: 0}
+  createSound: {fileID: 0}
 --- !u!4 &1322204880
 Transform:
   m_ObjectHideFlags: 0
