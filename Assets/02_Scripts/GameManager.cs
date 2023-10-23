@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
-    public PostProcessVolume postProcessing;
     public Light mainLight;
     public GameObject[] enemySpawnEffects;
+    public GameObject[] fireEffects;
+    public GameObject damageEffect;
 
     public int days = 0;
     public int gold = 0;
@@ -50,6 +51,26 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(MorningLight());
         }
+
+        if (health <= 70)
+        {
+            fireEffects[0].SetActive(true);
+            fireEffects[1].SetActive(true);
+        }
+        else
+        {
+            fireEffects[0].SetActive(false);
+            fireEffects[1].SetActive(false);
+        }
+
+        if (health <= 50)
+        {
+            fireEffects[2].SetActive(true);
+        }
+        else
+        {
+            fireEffects[2].SetActive(false);
+        }
     }
 
     public void NightTime()
@@ -71,16 +92,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnDamage(int _power)
+    public void OnDamage(int _power, Transform _pos)
     {
-        health -= _power;
+        StartCoroutine(DamageEffect(_pos));
         UIManager.Instance().casleSlider.value = (float)health / maxHealth;
+        health -= _power;
 
-        if(health < 0)
+        if (health < 0)
         {
             isDead = true;
             UIManager.Instance().GameOver();
         }
+    }
+
+    public IEnumerator DamageEffect(Transform _pos)
+    {
+        GameObject _damageEffect = Instantiate(damageEffect, _pos.position + (Vector3.up * 2) + (Vector3.forward * 1.5f), _pos.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Destroy(_damageEffect, 0.15f);
     }
 
     public void InitCasle()

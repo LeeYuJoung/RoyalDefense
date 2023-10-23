@@ -27,6 +27,7 @@ public class PawnController : MonoBehaviour
     public Transform moveTarget;
     public Transform attackTarget;
 
+    public GameObject damageEffect;
     public GameObject attackEffect;
     public GameObject attackRangeEffect;
     public GameObject levelUpEffect;
@@ -208,6 +209,7 @@ public class PawnController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
+        StartCoroutine(DamageEffect());
         health -= _power;
         hpSlider.value = (float)health / maxHealth;
 
@@ -217,7 +219,13 @@ public class PawnController : MonoBehaviour
             Destroy(clickObject);
             pawnState = LIVINGENTITYSTATE.DIE;
         }
+    }
 
+    public IEnumerator DamageEffect()
+    {
+        damageEffect.SetActive(true);
+        yield return new WaitForSeconds(0.35f);
+        damageEffect.SetActive(false);
     }
 
     IEnumerator OnDie()

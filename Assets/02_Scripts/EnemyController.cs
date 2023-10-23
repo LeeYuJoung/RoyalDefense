@@ -23,6 +23,9 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Collider _collider;
 
+    public GameObject damageEffect;
+    public float damageEffectTime;
+
     public GameObject damageCanvas;
     public Slider hpSlider;
 
@@ -165,7 +168,8 @@ public class EnemyController : MonoBehaviour
     }
 
     public void OnDamage(int _power)
-    { 
+    {
+        StartCoroutine(DamageEffect());
         GameObject _canvas = Instantiate(damageCanvas);
         _canvas.transform.localPosition = transform.position + canvasPos;
         _canvas.GetComponent<DamageCanvas>().damage = _power;
@@ -181,6 +185,13 @@ public class EnemyController : MonoBehaviour
             GameManager.Instance().getGold += getGold;
             GameManager.Instance().killCount++;
         }
+    }
+
+    public IEnumerator DamageEffect()
+    {
+        damageEffect.SetActive(true);
+        yield return new WaitForSeconds(damageEffectTime);
+        damageEffect.SetActive(false);
     }
 
     public void TargetCheck()

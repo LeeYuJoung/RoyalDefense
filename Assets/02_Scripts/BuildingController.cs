@@ -34,6 +34,7 @@ public class BuildingController : MonoBehaviour
     public GameObject target;
     public GameObject dieEffect;
 
+    public GameObject damageEffect;
     public GameObject coinPrefab;
     public Transform coinPos;
 
@@ -171,6 +172,7 @@ public class BuildingController : MonoBehaviour
 
     public void OnDamage(int _power)
     {
+        StartCoroutine(DamageEffect());
         health -= _power;
 
         if (health <= 0)
@@ -180,6 +182,13 @@ public class BuildingController : MonoBehaviour
             dieEffect.SetActive(true);
             Destroy(gameObject, 0.5f);
         }
+    }
+
+    public IEnumerator DamageEffect()
+    {
+        damageEffect.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        damageEffect.SetActive(false);
     }
 
     public void TargetCheck()

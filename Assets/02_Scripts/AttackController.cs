@@ -35,7 +35,8 @@ public class AttackController : MonoBehaviour
                     enemyController.target.GetComponent<PlayerController>().OnDamage(enemyController.power);
                     break;
                 case "Casle":
-                    GameManager.Instance().OnDamage(enemyController.power);
+                    GameManager.Instance().OnDamage(enemyController.power, enemyController.transform);
+                    
                     break;
                 case "Pawn":
                     enemyController.target.GetComponent<PawnController>().OnDamage(enemyController.power);
