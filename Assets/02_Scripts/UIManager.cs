@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using DG.Tweening;
-using System.Xml.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -202,12 +201,12 @@ public class UIManager : MonoBehaviour
 
     public void GoldTextChnage()
     {
-        goldText.text = GameManager.Instance().gold + " G";
+        goldText.text = GameManager.Instance().gold + "  G";
     }
 
     public void DiaTextChange()
     {
-        diaText.text = GameManager.Instance().diamond + " D";
+        diaText.text = GameManager.Instance().diamond + "  D";
     }
 
     public void BuyPossibleCheck()

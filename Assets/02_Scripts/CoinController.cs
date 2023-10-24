@@ -5,14 +5,11 @@ using DG.Tweening;
 
 public class CoinController : MonoBehaviour
 {
-
     void Start()
     {
-        transform.LookAt(Camera.main.transform.position);
-    }
+        DOTween.Init();
 
-    void Update()
-    {
+        transform.LookAt(Camera.main.transform.position);
         transform.DOMoveY(9.0f, 1.25f).OnComplete(() => Destroy(gameObject));
     }
 }

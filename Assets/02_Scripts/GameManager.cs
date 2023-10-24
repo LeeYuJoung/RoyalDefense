@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     }
 
     public Light mainLight;
+    public Light[] castleFireLights;
+
     public GameObject[] enemySpawnEffects;
     public GameObject[] fireEffects;
     public GameObject damageEffect;
@@ -45,11 +48,15 @@ public class GameManager : MonoBehaviour
         if (isNight)
         {
             StartCoroutine(NightLight());
+            StartCoroutine(CastleLightOn(true));
+            StartCoroutine(CastleFireLightOn(true));
             NightTime();
         }
         else if(!isNight && days != 0)
         {
             StartCoroutine(MorningLight());
+            StartCoroutine(CastleLightOn(false));
+            StartCoroutine(CastleFireLightOn(false));
         }
 
         if (health <= 70)
@@ -120,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator MorningLight()
     {
-        while (mainLight.intensity < 1.1f)
+        while (mainLight.intensity < 1.25f)
         {
             mainLight.intensity += 0.01f;
             yield return new WaitForSeconds(0.5f);
@@ -129,10 +136,54 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator NightLight()
     {
-        while (mainLight.intensity > 0.15f)
+        while (mainLight.intensity > 0f)
         {
             mainLight.intensity -= 0.01f;
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public IEnumerator CastleLightOn(bool isOn)
+    {
+        if (isOn)
+        {
+            while (castleFireLights[2].intensity < 2.1f)
+            {
+                castleFireLights[2].intensity += 0.02f;
+                castleFireLights[3].intensity += 0.02f;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            while (mainLight.intensity > 0f)
+            {
+                castleFireLights[2].intensity -= 0.02f;
+                castleFireLights[3].intensity -= 0.02f;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+    }
+
+    public IEnumerator CastleFireLightOn(bool isOn)
+    {
+        if (isOn)
+        {
+            while (castleFireLights[0].intensity < 2.7f)
+            {
+                castleFireLights[0].intensity += 0.03f;
+                castleFireLights[1].intensity += 0.03f;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            while (mainLight.intensity > 0f)
+            {
+                castleFireLights[0].intensity -= 0.03f;
+                castleFireLights[1].intensity -= 0.03f;
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }

@@ -12,11 +12,6 @@ public class MouseClickController : MonoBehaviour
 
     public RaycastHit hit;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
