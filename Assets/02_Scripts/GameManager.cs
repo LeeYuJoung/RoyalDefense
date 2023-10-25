@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        UIManager.Instance().DescriptionPanelOpen();
     }
 
     public void Update()
