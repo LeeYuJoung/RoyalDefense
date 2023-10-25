@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     public GameObject deletePossiblePanel;
     public GameObject gameoverPanel;
     public GameObject pricePanel;
+    public GameObject soundPanel;
 
     public GameObject descriptionPanel;
     public GameObject descriptionBack;
@@ -51,7 +52,8 @@ public class UIManager : MonoBehaviour
     public Image SoundImage;
     public Image StopImage;
     public Image doubleSpeedImage;
-    
+
+    public Slider mainSoundSlider;
     public Slider casleSlider;
 
     public Text daysText;
@@ -276,22 +278,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SoundButton()
+    public void MainSoundController()
     {
         AudioSource _mainAudio = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
-        AudioSource _audio = GameObject.Find("AudioManager").GetComponent<AudioSource>();
 
-        if (_mainAudio.volume == 0)
+        _mainAudio.volume = mainSoundSlider.value / 4f;
+    }
+
+    public void SoundPanelOpen(bool isOn)
+    {
+        if (isOn)
         {
-            _mainAudio.volume = 0.2f;
-            _audio.volume = 1f;
-            SoundImage.sprite = optionSprits[2];
+            soundPanel.SetActive(true);
+            soundPanel.GetComponent<RectTransform>().DOAnchorPosY(0.0f, 0.5f).SetEase(Ease.InExpo).SetEase(Ease.OutBounce);
         }
         else
         {
-            _mainAudio.volume = 0;
-            _audio.volume = 0f;
-            SoundImage.sprite = optionSprits[3];
+            soundPanel.GetComponent<RectTransform>().DOAnchorPosY(-1000.0f, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => soundPanel.SetActive(false));
         }
     }
 

@@ -149,10 +149,10 @@ public class GameManager : MonoBehaviour
     {
         if (isOn)
         {
-            while (castleFireLights[2].intensity < 2.1f)
+            while (castleFireLights[2].intensity < 1.9f)
             {
-                castleFireLights[2].intensity += 0.02f;
-                castleFireLights[3].intensity += 0.02f;
+                castleFireLights[2].intensity += 0.015f;
+                castleFireLights[3].intensity += 0.015f;
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -160,8 +160,8 @@ public class GameManager : MonoBehaviour
         {
             while (mainLight.intensity > 0f)
             {
-                castleFireLights[2].intensity -= 0.02f;
-                castleFireLights[3].intensity -= 0.02f;
+                castleFireLights[2].intensity -= 0.015f;
+                castleFireLights[3].intensity -= 0.015f;
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -173,8 +173,8 @@ public class GameManager : MonoBehaviour
         {
             while (castleFireLights[0].intensity < 2.7f)
             {
-                castleFireLights[0].intensity += 0.03f;
-                castleFireLights[1].intensity += 0.03f;
+                castleFireLights[0].intensity += 0.02f;
+                castleFireLights[1].intensity += 0.02f;
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -182,8 +182,8 @@ public class GameManager : MonoBehaviour
         {
             while (mainLight.intensity > 0f)
             {
-                castleFireLights[0].intensity -= 0.03f;
-                castleFireLights[1].intensity -= 0.03f;
+                castleFireLights[0].intensity -= 0.02f;
+                castleFireLights[1].intensity -= 0.02f;
                 yield return new WaitForSeconds(0.5f);
             }
         }

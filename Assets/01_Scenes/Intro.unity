@@ -150,9 +150,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96ef1421ced0ea549925711420fd8176, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 34ca3d1059c6ff14ab1056aae8170a4a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1407,6 +1407,7 @@ MonoBehaviour:
   deletePossiblePanel: {fileID: 0}
   gameoverPanel: {fileID: 0}
   pricePanel: {fileID: 0}
+  soundPanel: {fileID: 0}
   descriptionPanel: {fileID: 0}
   descriptionBack: {fileID: 0}
   descriptions: []
@@ -1419,6 +1420,7 @@ MonoBehaviour:
   SoundImage: {fileID: 0}
   StopImage: {fileID: 0}
   doubleSpeedImage: {fileID: 0}
+  mainSoundSlider: {fileID: 0}
   casleSlider: {fileID: 0}
   daysText: {fileID: 0}
   goldText: {fileID: 0}
