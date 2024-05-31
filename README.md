@@ -1,5 +1,5 @@
 # ⚔ RoyalDefense
-![](https://github.com/LeeYuJoung/RoyalDefense/blob/main/Untitled.png)
+![](https://github.com/LeeYuJoung/RoyalDefense/blob/main/Intro_Image.png)
 
 ## 🛠 Stacks
 ![](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white) 
