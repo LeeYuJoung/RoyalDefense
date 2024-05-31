@@ -14,4 +14,6 @@
  
  📒 [Notion : RoyalDefense 개발문서](https://www.notion.so/Royal-Defense-0e1e72b8a303413795e148e61015336c)
 
+ 📋 [RoyalDefense 게임기획서](https://drive.google.com/file/d/1OW9jdIzAGlB4QW5frjLavO0Xy3QqYEqs/view)
+
  📃 [기타 : 참고 자료]()
