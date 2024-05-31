@@ -2,9 +2,9 @@
 <img src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/Intro_Image.png" width="550" height="325"/><img src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/InGame_Image.png" width="550" height="325"/>
 
 *** 
-📅 **개발 기간** : 2023.10.01 ~ 2023.10.23
+📅 **개발 기간 : 2023.10.01 ~ 2023.10.23**
  
-📌 **장르** : 3D, 액션, RTS, Defense
+📌 **장르 : 3D, 액션, RTS, Defense**
 ***
 
 ## 🛠 Stacks
