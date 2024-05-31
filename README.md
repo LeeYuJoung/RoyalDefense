@@ -10,6 +10,8 @@
 + **Monster AI** 구현
 
 ## 🔗 Links
- 📹 [youtube](https://youtu.be/ZUyHROVLqVg)
+ 📺 [youtube : RoyalDefense 플레이 영상](https://youtu.be/ZUyHROVLqVg)
  
- 📒 [Notion](https://www.notion.so/Royal-Defense-0e1e72b8a303413795e148e61015336c)
+ 📒 [Notion : RoyalDefense 개발문서](https://www.notion.so/Royal-Defense-0e1e72b8a303413795e148e61015336c)
+
+ 📃 [기타 : 참고 자료]()
