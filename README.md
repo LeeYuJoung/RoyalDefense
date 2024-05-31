@@ -1,6 +1,12 @@
 # ⚔ RoyalDefense
 <img src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/Intro_Image.png" width="550" height="325"/><img src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/InGame_Image.png" width="550" height="325"/>
 
+*** 
+📅 **개발 기간** : 2023.10.01 ~ 2023.10.23
+ 
+📌 **장르** : 3D, 액션, RTS, Defense
+***
+
 ## 🛠 Stacks
 ![](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white) 
@@ -16,4 +22,4 @@
 
  📋 [RoyalDefense 게임기획서](https://drive.google.com/file/d/1OW9jdIzAGlB4QW5frjLavO0Xy3QqYEqs/view)
 
- 📃 [기타 : 참고 자료]()
+ 🎮 [Game Download](https://drive.google.com/file/d/1wBIDSGRxLbNrVF3ClIWI2UlfkJuN0W_F/view)
