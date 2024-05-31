@@ -1,7 +1,7 @@
 # ⚔ RoyalDefense
 <div>
- <img width="370" src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/Intro_Image.png">
- <img width="370" src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/InGame_Image.png">
+ <img width="400" src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/Intro_Image.png">
+ <img width="400" src="https://github.com/LeeYuJoung/RoyalDefense/blob/main/InGame_Image.png">
 </div>
 
 *** 
