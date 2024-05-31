@@ -17,6 +17,14 @@
 
 ## 💡 Points
 + **Monster AI** 구현
+  - **기본 목적지 성**으로 설정
+  - 만약, Enemy의 **추적 반경 안에 Player가 들어오면** 추적 대상 Player로 변경
+  - 만약, Enemy가 **팬스에 충돌**하면 움직임을 멈추고 팬스에 공격 시작
+  - 모든 예외 상황이 사라지면 다시 성을 추적 대상으로 할당
+    
+ + **Player의 Pawn** 이동
+   - Player가 가지고 있는 병사 중 하나를 클릭 후 **tag가 Tile인 Object를 클릭 시** 해당 Object 위치로 병사 이동
+   - 만약, 이동 중 **Pawn의 반경 안에 Enemy가 들어오면** 이동 멈추고 공격 시작
 
 ## 🔗 Links
  📺 [youtube : RoyalDefense 플레이 영상](https://youtu.be/ZUyHROVLqVg)
