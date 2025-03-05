@@ -29,7 +29,7 @@
 ## 🔗 Links
  📺 [youtube : RoyalDefense 플레이 영상](https://youtu.be/ZUyHROVLqVg)
  
- 📒 [Notion : RoyalDefense 개발문서](https://www.notion.so/Royal-Defense-0e1e72b8a303413795e148e61015336c)
+ 📒 [Notion : RoyalDefense 개발문서](https://stump-lifter-1b4.notion.site/Royal-Defense-1ad55d2c7953816cbf6ff83630b68008)
 
  📋 [RoyalDefense 게임기획서](https://drive.google.com/file/d/1OW9jdIzAGlB4QW5frjLavO0Xy3QqYEqs/view)
 
